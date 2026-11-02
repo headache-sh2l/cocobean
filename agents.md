@@ -4,13 +4,20 @@ Welcome to **Cocobean**, an offline-first, privacy-focused Android application d
 
 ---
 
+## 📁 Documentation Location
+All project documentation should be referenced from the `/docs` folder at the root of this repository. Before making any changes to the codebase, please check the relevant documentation files in the docs folder for guidelines, patterns, and best practices.
+
+Start with [`docs/README.md`](docs/README.md) for the document map and source-of-truth order. The screen-level docs (`app_layout.md`, `userflow.md`) are subordinate to the product, domain, clinical, and architecture docs. Unresolved decisions live in [`docs/open-questions.md`](docs/open-questions.md).
+
+---
+
 ## 1. Core Architectural Pillars
 
 ### 1.1. 100% On-Device & Privacy-First
 - **No Cloud Dependencies**: All user health data, logs, dietary notes, and milestones must remain strictly on the user's device.
 - **Local Persistence**: Use **Room Database** for structured relational data (milestones, food logs, reminders, history) and **Jetpack DataStore** for preferences and user settings.
 - **Data Backup & Export**: Because data is strictly local, implement robust JSON/SQLite local export and import capabilities so users can securely back up and migrate their records across devices without cloud accounts.
-
+  
 ### 1.2. Target Audience & Domain Scope
 - **Expectant & New Mothers**: UX/UI must be compassionate, calming, accessible, and reassuring. Avoid cluttered interfaces or alarming red warning colors unless flagging genuine food safety or medical urgency.
 - **Pregnancy & Postpartum Journey**: Track gestational weeks/trimesters, fetal development milestones, maternal physical/mental changes, and postpartum recovery milestones (newborn tracking, vaccinations, feeding/sleep logs).
