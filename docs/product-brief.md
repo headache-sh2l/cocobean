@@ -82,19 +82,26 @@ content, reminders, safety) and is the most differentiated.
 
 - Transition planning → pregnancy on positive test.
 - Food safety: searchable bundled database, risk levels, condition modifiers, meal log.
+- List of questions to ask during appointment
+
 
 ### 6.3. V1.2
 
-- Planning to conceive: cycle log, predictions, fertile window, two-week wait.
+- To-do list for self to help keep track of things
 
 ### 6.3. V1.3
 
+ Planning to conceive: cycle log, predictions, fertile window, two-week wait.
+
+
+### 6.4
 Postpartum: milestones, feeding/diaper/sleep logs, growth measurements,
   vaccination schedule, EPDS check-ins, recovery content.
 - Transition pregnancy → postpartum on birth.
 - Mental health check-ins for new mothers
 
-### 6.4. Later / explicitly deferred
+### 6.5
+.** Later / explicitly deferred**
 
 - Growth percentiles with WHO/CDC LMS tables (log first, percentiles later).
 - Partner/caregiver mode.
@@ -106,7 +113,7 @@ Postpartum: milestones, feeding/diaper/sleep logs, growth measurements,
 - Social/community features.
 - Monetization experiments.
 
-### 6.5. Non-goals
+### 6.6. Non-goals
 
 - Diagnosis, treatment, or dosage recommendations.
 - Replacing prenatal care.
