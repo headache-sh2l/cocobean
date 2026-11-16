@@ -27,7 +27,6 @@ Explicitly included:
 - Same-sex couples and non-gestational parents.
 - Adoptive parents, surrogates, and intended parents.
 - People who have experienced pregnancy loss.
-- People with disabilities, low vision, or limited literacy.
 - People with limited or no internet access.
 
 We do **not** assume:
@@ -49,9 +48,7 @@ We do **not** assume:
    now." It cannot say "you have preeclampsia."
 6. **The user owns the data.** Export must be complete, readable, and restorable without
    our servers.
-7. **Accessible by construction.** 48dp targets, 200% font scaling, TalkBack, reduced
-   motion, color-independent status.
-8. **Content is reviewed, sourced, and versioned.** No unreviewed medical claims.
+
 
 ## 5. What Cocobean is / is not
 
@@ -74,23 +71,28 @@ content, reminders, safety) and is the most differentiated.
 - Pregnancy journey: EDD from LMP/ultrasound/manual/IVF, gestational age, trimester,
   week-by-week dashboard, fruit comparison, countdown.
 - Daily log: symptoms, mood, weight, notes.
-- Reminders: hydration, activity, supplements, appointments; quiet hours; permission
+- Reminders: hydration, activity, supplements, appointments, mental health minute; quiet hours; permission
   handling; reboot/timezone resilience.
-- Food safety: searchable bundled database, risk levels, condition modifiers, meal log.
 - Appointments: local list + optional system calendar insert.
 - Export/import: complete JSON, optional password encryption.
 - Settings: units, theme, app lock, data deletion, about/disclaimer.
 
 ### 6.2. V1.1
 
-- Planning to conceive: cycle log, predictions, fertile window, two-week wait.
+
 - Transition planning → pregnancy on positive test.
+- Food safety: searchable bundled database, risk levels, condition modifiers, meal log.
 
 ### 6.3. V1.2
 
-- Postpartum: milestones, feeding/diaper/sleep logs, growth measurements,
+- Planning to conceive: cycle log, predictions, fertile window, two-week wait.
+
+### 6.3. V1.3
+
+Postpartum: milestones, feeding/diaper/sleep logs, growth measurements,
   vaccination schedule, EPDS check-ins, recovery content.
 - Transition pregnancy → postpartum on birth.
+- Mental health check-ins for new mothers
 
 ### 6.4. Later / explicitly deferred
 
@@ -120,15 +122,11 @@ We cannot use in-app analytics without breaking principle 1. Use:
 - **Moderated usability tests** with 8–12 target users per stage.
 - **Task completion** in tests: set up pregnancy, log a meal, find a food, schedule a
   reminder, export and restore data.
-- **Accessibility audit** pass (TalkBack, 200% font, contrast).
-- **Clinical content review** sign-off with dated sources.
-- **Notification reliability** measured in a controlled device matrix, not in production.
 
 Targets for MVP:
 
 - Crash-free sessions ≥ 99.5%.
 - Export → wipe → import round-trip preserves 100% of records.
-- All critical flows usable with TalkBack and 200% font.
 - Zero network calls (verifiable by absence of `INTERNET` permission).
 
 ## 8. Risks and mitigations
@@ -174,7 +172,7 @@ Targets for MVP:
 
 ### P6 — "I need help now"
 - Job: "Tell me whether to call someone, and how."
-- Needs: red-flag guidance, emergency contacts, crisis resources.
+- Needs: red-flag guidance, emergency contacts, crisis resources, ensure "call 911 for an emergency" and "talk to your provider, this is not medical advice".
 - Failure: buried in a settings screen.
 
 ## 10. Constraints
