@@ -21,14 +21,14 @@
 ## Phase 1 — Onboarding and journeys (1–2 weeks)
 
 - [ ] Profile + DataStore.
-- [ ] Onboarding: welcome, name (optional), stage, disclaimer.
+- [ ] Onboarding: welcome, name (optional), stage (pregnancy only; planning/postpartum
+  shown as "coming soon"), disclaimer.
 - [ ] Journey model + repository + primary journey.
 - [ ] App shell with stage-derived bottom nav.
 - [ ] Settings: units, theme, change stage, delete data.
 - [ ] Empty states for every tab.
 
-**Exit:** a user can onboard into any stage, switch stages without data loss, and delete
-everything.
+**Exit:** a user can onboard into pregnancy and delete everything.
 
 ## Phase 2 — Pregnancy core (2–3 weeks)
 
@@ -37,6 +37,11 @@ everything.
 - [ ] Pregnancy dashboard: week, fruit, countdown, today's log.
 - [ ] Fruit content (40 weeks) + illustrations.
 - [ ] Daily log: symptoms, mood, weight, notes.
+- [ ] Symptom catalog content.
+- [ ] Kick counter and contraction timer with red-flag copy.
+- [ ] Hospital bag checklist.
+- [ ] Emergency contacts and red-flag guidance.
+- [ ] Loss/termination flow: pause reminders, sensitive copy, no auto-advance.
 - [ ] EDD change flow with audit + banner.
 - [ ] Week-by-week content (first pass).
 
@@ -56,7 +61,7 @@ everything.
 **Exit:** reminders fire reliably on stock and at least two OEM devices, survive reboot,
 and degrade visibly when permission is denied.
 
-## Phase 4 — Food safety (2 weeks)
+## Phase 4 — Food safety (2 weeks) — post-MVP (V1.1)
 
 - [ ] Food content schema + 300 reviewed items.
 - [ ] Search with aliases and FTS.
@@ -119,9 +124,9 @@ taps.
 
 ## MVP cut line
 
-**Recommended MVP = Phases 0–5.** That is a complete pregnancy companion with reminders,
-food safety, and trustworthy data ownership. Planning and postpartum follow in V1.1 and
-V1.2.
+**Recommended MVP = Phases 0–3 and 5** (food safety, Phase 4, moves to V1.1). That is a
+complete pregnancy companion with reminders and trustworthy data ownership. Food safety
+follows in V1.1; planning and postpartum later.
 
 Why: pregnancy exercises the hardest problems (dates, content, reminders, safety) and is
 the most differentiated. Shipping all three stages at once triples the content review

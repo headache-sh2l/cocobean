@@ -134,7 +134,7 @@ Use for date invariants:
 7. Export, wipe, import; confirm all data returns.
 8. Enable app lock; background; confirm lock.
 9. Enable 200% font; walk every screen.
-10. Enable TalkBack; complete onboarding and log a meal.
+10. Enable TalkBack; complete onboarding and log a food entry.
 
 ## 9. CI
 

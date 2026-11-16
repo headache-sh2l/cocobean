@@ -67,38 +67,65 @@ We do **not** assume:
 **Pregnancy-first vertical slice**, because it exercises the hardest problems (dates,
 content, reminders, safety) and is the most differentiated.
 
-- Onboarding: local profile, stage selection, due-date setup, disclaimer.
+- Onboarding: local profile, stage selection (pregnancy only in MVP; planning and
+  postpartum shown as "coming soon"), due-date setup, disclaimer.
 - Pregnancy journey: EDD from LMP/ultrasound/manual/IVF, gestational age, trimester,
   week-by-week dashboard, fruit comparison, countdown.
 - Daily log: symptoms, mood, weight, notes.
+- Food Entry: logging food (free text; no food-safety database in MVP).
+- Kick counter and contraction timer, with red-flag copy.
+- Hospital bag checklist.
+- Safety: emergency contacts, red-flag guidance, and crisis resources.
+- Loss/termination: sensitive flow that pauses reminders immediately and never
+  auto-advances to postpartum.
 - Reminders: hydration, activity, supplements, appointments, mental health minute; quiet hours; permission
   handling; reboot/timezone resilience.
 - Appointments: local list + optional system calendar insert.
 - Export/import: complete JSON, optional password encryption.
 - Settings: units, theme, app lock, data deletion, about/disclaimer.
 
-### 6.2. V1.1
+Entity mapping:
 
+| Entity | Domain model § | MVP use |
+|---|---|---|
+| Profile | [3.1](domain-model.md#31-profile-singleton-id--1) | Local profile, units, theme, app lock, disclaimer |
+| Journey | [3.2](domain-model.md#32-journey) | Pregnancy journey container and stage |
+| PregnancyDetails | [3.3](domain-model.md#33-pregnancydetails-11-with-a-pregnancy-journey) | EDD (LMP/ultrasound/manual/IVF), GA inputs |
+| DailyLog | [3.9](domain-model.md#39-dailylog) | Symptoms, mood, weight, notes |
+| FoodEntry | [3.11](domain-model.md#311-foodentry) | Food logging only (no risk/safety content) |
+| Appointment | [3.13](domain-model.md#313-appointment) | Local appointment list + calendar insert |
+| Reminder | [3.14](domain-model.md#314-reminder) | Hydration, activity, supplement, appointment reminders |
+| Supplement | [3.15](domain-model.md#315-supplement) | Supplement tracking |
+| HydrationLog / ActivityLog | [3.16](domain-model.md#316-hydrationlog--activitylog) | Hydration and activity logs |
+| EmergencyContact | [3.22](domain-model.md#322-emergencycontact--hospitalbagitem) | Emergency contacts |
+| HospitalBagItem | [3.22](domain-model.md#322-emergencycontact--hospitalbagitem) | Hospital bag checklist |
+| ExportRecord | [3.23](domain-model.md#323-exportrecord) | Export/import metadata |
+| FruitSize / WeekContent | [3.24](domain-model.md#324-fruitsize--weekcontent-content) | Fruit comparison + week-by-week content |
+| SymptomDefinition | [3.25](domain-model.md#325-symptomdefinition-content) | Symptom catalog for the daily log |
+| KickSession / ContractionLog | [3.26](domain-model.md#326-kicksession--contractionlog) | Kick counter and contraction timer |
 
-- Transition planning → pregnancy on positive test.
-- Food safety: searchable bundled database, risk levels, condition modifiers, meal log.
+### 6.2. Roadmap 
+#### V1.1
+- Food Safety : searchable bundled database, risk levels, condition modifiers, meal log.
+
+ #### V1.2
 - List of questions to ask during appointment
 
-
-### 6.3. V1.2
-
+#### V1.3
 - To-do list for self to help keep track of things
 
-### 6.3. V1.3
-
- Planning to conceive: cycle log, predictions, fertile window, two-week wait.
-
-
-### 6.4
+#### V1.4
 Postpartum: milestones, feeding/diaper/sleep logs, growth measurements,
   vaccination schedule, EPDS check-ins, recovery content.
 - Transition pregnancy → postpartum on birth.
 - Mental health check-ins for new mothers
+
+#### V1.5
+- Transition planning → pregnancy on positive test.
+#### V1.6
+ Planning to conceive: cycle log, predictions, fertile window, two-week wait.
+
+
 
 ### 6.5
 .** Later / explicitly deferred**
@@ -127,8 +154,8 @@ We cannot use in-app analytics without breaking principle 1. Use:
 
 - **Play Console vitals** (crash-free rate, ANR rate) — OS-level, no app telemetry.
 - **Moderated usability tests** with 8–12 target users per stage.
-- **Task completion** in tests: set up pregnancy, log a meal, find a food, schedule a
-  reminder, export and restore data.
+- **Task completion** in tests: set up pregnancy, log a food entry, add an appointment,
+  schedule a reminder, export and restore data.
 
 Targets for MVP:
 

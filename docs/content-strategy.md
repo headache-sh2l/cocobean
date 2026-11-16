@@ -7,7 +7,7 @@
 
 | Type | Examples | Volume (MVP) | Update cadence |
 |---|---|---|---|
-| Food safety | Salmon, brie, deli turkey, herbal tea | 300–500 items | Quarterly review |
+| Food safety | Salmon, brie, deli turkey, herbal tea | 300–500 items (V1.1) | Quarterly review |
 | Fruit/vegetable size | Poppy seed → watermelon | 40 weeks | Annual |
 | Week-by-week pregnancy | What's developing, what you may feel | 40 weeks | Annual |
 | Milestones | First smile, first steps | ~60 items | Annual |

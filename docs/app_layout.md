@@ -67,6 +67,8 @@ flowchart TD
   - Card 1: **Planning to Conceive** (Icon: Seedling, Description: Track ovulation, cycle, and conception nutrition).
   - Card 2: **Pregnant** (Icon: Baby bump / Fruit, Description: Due date countdown, fruit growth, prenatal care).
   - Card 3: **Postpartum** (Icon: Newborn / Heart, Description: Postpartum recovery, newborn milestones, health).
+  - **MVP:** only **Pregnant** is selectable; Planning to Conceive and Postpartum render as
+    disabled cards labelled *"Coming soon"*.
 
 ---
 
@@ -103,7 +105,7 @@ flowchart TD
   - Calendar view highlighting upcoming ultrasounds, doctor visits, and lab tests.
   - "Add to calendar" button (one-way insert into the system calendar; no two-way sync).
   - Emergency contacts and hospital bag checklist.
-- **Food Safety & Condition Tracker (`FoodSafetyTrackerScreen.kt`)**:
+- **Food Safety & Condition Tracker (`FoodSafetyTrackerScreen.kt`)** — *deferred to V1.1; not in the MVP cut*:
   - **Searchable Food Safety Lookup**: Search any food item instantly (Safe, Moderate, Avoid).
   - **Condition Toggles**: e.g. gestational diabetes mode, which adjusts food notes and enables a glucose log. The app records what the user's provider recommends; it does not set intake limits.
   - **Meal Logger**: Log breakfast, lunch, dinner with nutritional impact notes.

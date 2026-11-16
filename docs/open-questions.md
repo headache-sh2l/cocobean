@@ -15,7 +15,7 @@
 
 | ID | Question | Recommendation | Blocking |
 |---|---|---|---|
-| Q-01 | MVP scope | Pregnancy-first (Phases 0–5) | 🔴 |
+| Q-01 | MVP scope | Pregnancy-first (Phases 0–3 + 5; food safety V1.1) | 🔴 |
 | Q-02 | Launch region | US first, region-aware architecture | 🔴 |
 | Q-03 | Clinical reviewer | Required before release; start sourcing now | 🔴 |
 | Q-04 | Content licensing | Original summaries + citations; no copied text | 🔴 |
@@ -48,8 +48,9 @@
 - D. Postpartum-first.
 
 **Recommendation: B.** Pregnancy exercises dates, content, reminders, and safety; it is
-the most differentiated; it keeps the content review burden manageable. Planning and
-postpartum follow in V1.1/V1.2, but the **data model supports all three from day one**.
+the most differentiated; it keeps the content review burden manageable. MVP = Phases 0–3
+and 5; food safety (Phase 4) moves to V1.1, and planning/postpartum follow later. The
+**data model supports all three from day one**.
 
 **Impact:** roadmap, content volume, release date.
 

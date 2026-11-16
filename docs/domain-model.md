@@ -51,10 +51,14 @@ erDiagram
     FOOD_ITEM ||--o{ FOOD_ENTRY : referenced_by
     MILESTONE_DEFINITION ||--o{ MILESTONE_ACHIEVEMENT : defines
     VACCINE_DEFINITION ||--o{ VACCINATION_RECORD : defines
+    JOURNEY ||--o{ KICK_SESSION : tracks
+    JOURNEY ||--o{ CONTRACTION_LOG : tracks
+    DAILY_LOG }o--o{ SYMPTOM_DEFINITION : references
 ```
 
-`FOOD_ITEM`, `MILESTONE_DEFINITION`, and `VACCINE_DEFINITION` are **content** tables
-(bundled, read-only, versioned). Everything else is **user data**.
+`FOOD_ITEM`, `MILESTONE_DEFINITION`, `VACCINE_DEFINITION`, `FRUIT_SIZE`, `WEEK_CONTENT`,
+and `SYMPTOM_DEFINITION` are **content** tables (bundled, read-only, versioned).
+Everything else is **user data**.
 
 ## 3. Entities
 
@@ -404,6 +408,79 @@ HospitalBagItem: `id`, `journeyId`, `label`, `category`, `isPacked`, `isCustom`.
 
 `id`, `createdAt`, `fileName`, `schemaVersion`, `appVersion`, `encrypted`, `checksum`,
 `recordCounts` (JSON).
+
+### 3.24. FruitSize / WeekContent (content)
+
+FruitSize:
+
+| Field | Type | Notes |
+|---|---|---|
+| `week` | Int PK | 1–40. |
+| `name` | String | e.g. "Raspberry". |
+| `lengthCm` | Double? | Approximate. |
+| `weightG` | Double? | Approximate. |
+| `illustration` | String | Bundled asset path. |
+| `altText` | String | Accessibility description. |
+| `note` | String? | One line, non-clinical. |
+| `sourceRefs` | List<String> | Citation IDs. |
+| `reviewedOn` | LocalDate | |
+| `contentVersion` | String | |
+
+WeekContent:
+
+| Field | Type | Notes |
+|---|---|---|
+| `week` | Int PK | 1–40. |
+| `title` | String | |
+| `body` | String | Plain-language, non-diagnostic. |
+| `sourceRefs` | List<String> | |
+| `reviewedOn` | LocalDate | |
+| `contentVersion` | String | |
+
+**Rule:** fruit sizes are approximate. Pick one source, state it, and never imply medical
+precision.
+
+### 3.25. SymptomDefinition (content)
+
+| Field | Type | Notes |
+|---|---|---|
+| `key` | String | e.g. `symptom.nausea`. |
+| `label` | String | |
+| `category` | String | e.g. `digestive`, `mood`, `pain`. |
+| `redFlag` | Boolean | True = surface "contact your provider" copy. |
+| `sourceRefs` | List<String> | |
+| `reviewedOn` | LocalDate | |
+| `contentVersion` | String | |
+
+`DailyLog.symptoms` stores these stable keys.
+
+### 3.26. KickSession / ContractionLog
+
+KickSession:
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | String | |
+| `journeyId` | String | |
+| `startedAt` | Instant | |
+| `endedAt` | Instant? | |
+| `kickCount` | Int | |
+| `notes` | String? | |
+
+ContractionLog:
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | String | |
+| `journeyId` | String | |
+| `startedAt` | Instant | |
+| `endedAt` | Instant? | |
+| `durationSeconds` | Int? | Derived from start/end. |
+| `intensity` | `MILD` / `MODERATE` / `STRONG`? | User-reported. |
+| `notes` | String? | |
+
+**Rule:** these are tracking tools, not diagnostics. Show red-flag copy ("call your
+provider") but never interpret the pattern.
 
 ## 4. Stage state machine
 
