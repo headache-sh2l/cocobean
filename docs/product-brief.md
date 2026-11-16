@@ -10,15 +10,9 @@ record staying on the user's device.**
 
 ## 2. The problem
 
-The process of becoming a parent can be overwhelming. There are multiple sources of information, appointments strewn everywhere, and most website, blogs, tiktoks or apps tell you what to do. There's no one non-subscription place for most parents to create their own to-do list, add their birthing plan, track their own nutrition and mental health while also visualizing how their baby is growing, and what to look out for.
+The process of becoming a parent can be overwhelming. There are multiple sources of information, appointments strewn everywhere, and most website, blogs, tiktoks or apps tell you what to do. There's no one non-subscription place for most parents to create their own to-do list, add their birthing plan, track their own nutrition and mental health while also visualizing how their baby is growing, and what to look out for and track milestones.
 
-Expectant and new parents are asked to track a lot at once: cycle dates, appointments,
-supplements, hydration, food safety, fetal movement, newborn feeding, milestones,
-vaccinations, and their own mental health. The information is fragmented across apps,
-websites, and paper handouts. Most apps are cloud-first, ad-supported, or designed around
-a clinical workflow rather than a tired human at 3 a.m.
 
-Cocobean's bet: **calm, local, and complete beats feature-bloated and connected.**
 
 ## 3. Who it is for
 
