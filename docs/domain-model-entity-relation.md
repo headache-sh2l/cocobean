@@ -27,6 +27,7 @@ diagram below is deliberately small (≤ ~6 entities). For the full graph, see
 | `||--o{` | one to many |
 | `}o--o{` | many to many |
 | `PK` / `FK` | primary key / foreign key |
+| `"..."` | example value (rendered as the comment column) |
 | **content** | bundled, read-only, versioned reference data |
 
 ---
@@ -39,30 +40,30 @@ erDiagram
     JOURNEY ||--o| CHILD : results_in
 
     PROFILE {
-        int id PK
-        string primaryJourneyId FK
-        string units
-        string region
-        string themeMode
-        boolean appLockEnabled
-        boolean screenshotProtection
+        int id PK "1"
+        string primaryJourneyId FK "01J8Z3K4Q7"
+        string units "METRIC"
+        string region "US"
+        string themeMode "SYSTEM"
+        boolean appLockEnabled "false"
+        boolean screenshotProtection "false"
     }
     JOURNEY {
-        string id PK
-        string type
-        string status
-        string outcome
-        boolean isPrimary
-        date startedOn
-        date endedOn
-        instant deletedAt
+        string id PK "01J8Z3K4Q7"
+        string type "PREGNANCY"
+        string status "ACTIVE"
+        string outcome "ONGOING"
+        boolean isPrimary "true"
+        date startedOn "2026-03-01"
+        date endedOn "null"
+        instant deletedAt "null"
     }
     CHILD {
-        string id PK
-        date birthOn
-        string sex
-        boolean isPreterm
-        date adjustedAgeUntilOn
+        string id PK "01J9A1B2C3"
+        date birthOn "2026-11-20"
+        string sex "FEMALE"
+        boolean isPreterm "false"
+        date adjustedAgeUntilOn "null"
     }
 ```
 
@@ -77,44 +78,44 @@ erDiagram
     JOURNEY ||--o{ OVULATION_TEST : logs
 
     PREGNANCY_DETAILS {
-        string journeyId PK
-        date lmpOn
-        date eddOn
-        string eddSource
-        int fetusCount
-        string riskFlags
-        json eddHistory
+        string journeyId PK "01J8Z3K4Q7"
+        date lmpOn "2026-02-01"
+        date eddOn "2026-11-08"
+        string eddSource "LMP"
+        int fetusCount "1"
+        string riskFlags "GDM"
+        json eddHistory "2 entries"
     }
     POSTPARTUM_DETAILS {
-        string journeyId PK
-        date birthOn
-        string birthType
-        int gestationalAgeAtBirthWeeks
-        string feedingMethod
-        string childId FK
+        string journeyId PK "01J9B4D5E6"
+        date birthOn "2026-11-20"
+        string birthType "VAGINAL"
+        int gestationalAgeAtBirthWeeks "39"
+        string feedingMethod "BREAST"
+        string childId FK "01J9A1B2C3"
     }
     CYCLE_PROFILE {
-        string journeyId PK
-        int averageCycleLengthDays
-        int averagePeriodLengthDays
-        int lutealPhaseDays
-        string regularity
-        boolean pcosFlag
+        string journeyId PK "01J7C8D9E0"
+        int averageCycleLengthDays "28"
+        int averagePeriodLengthDays "5"
+        int lutealPhaseDays "14"
+        string regularity "IRREGULAR"
+        boolean pcosFlag "false"
     }
     CYCLE_ENTRY {
-        string id PK
-        string journeyId FK
-        date startOn
-        date endOn
-        string flow
-        boolean isPredicted
+        string id PK "01J7D1E2F3"
+        string journeyId FK "01J7C8D9E0"
+        date startOn "2026-01-05"
+        date endOn "2026-01-09"
+        string flow "MEDIUM"
+        boolean isPredicted "false"
     }
     OVULATION_TEST {
-        string id PK
-        string journeyId FK
-        date testedOn
-        string result
-        instant testedAt
+        string id PK "01J7E4F5G6"
+        string journeyId FK "01J7C8D9E0"
+        date testedOn "2026-01-18"
+        string result "POSITIVE"
+        instant testedAt "2026-01-18T07:30:00Z"
     }
 ```
 
@@ -130,47 +131,47 @@ erDiagram
     DAILY_LOG }o--o{ SYMPTOM_DEFINITION : references
 
     DAILY_LOG {
-        string id PK
-        string journeyId FK
-        date loggedOn
-        int mood
-        int energy
-        double weightKg
-        double sleepHours
-        string symptoms
+        string id PK "01J8F7G8H9"
+        string journeyId FK "01J8Z3K4Q7"
+        date loggedOn "2026-06-01"
+        int mood "4"
+        int energy "3"
+        double weightKg "68.4"
+        double sleepHours "7.5"
+        string symptoms "nausea, fatigue"
     }
     HYDRATION_LOG {
-        string id PK
-        string journeyId FK
-        date loggedOn
-        int amountMl
+        string id PK "01J8G1H2J3"
+        string journeyId FK "01J8Z3K4Q7"
+        date loggedOn "2026-06-01"
+        int amountMl "250"
     }
     ACTIVITY_LOG {
-        string id PK
-        string journeyId FK
-        date loggedOn
-        string activityType
-        int minutes
+        string id PK "01J8H4J5K6"
+        string journeyId FK "01J8Z3K4Q7"
+        date loggedOn "2026-06-01"
+        string activityType "WALK"
+        int minutes "20"
     }
     MOOD_CHECKIN {
-        string id PK
-        string journeyId FK
-        date loggedOn
-        int score
-        string tags
+        string id PK "01J8J7K8L9"
+        string journeyId FK "01J8Z3K4Q7"
+        date loggedOn "2026-06-01"
+        int score "4"
+        string tags "calm"
     }
     EPDS_ASSESSMENT {
-        string id PK
-        string journeyId FK
-        date takenOn
-        int totalScore
-        int item10Score
+        string id PK "01J8K1L2M3"
+        string journeyId FK "01J9B4D5E6"
+        date takenOn "2026-12-01"
+        int totalScore "7"
+        int item10Score "0"
     }
     SYMPTOM_DEFINITION {
-        string key PK
-        string label
-        string category
-        boolean redFlag
+        string key PK "symptom.nausea"
+        string label "Nausea"
+        string category "digestive"
+        boolean redFlag "false"
     }
 ```
 
@@ -183,27 +184,27 @@ erDiagram
     FOOD_ITEM ||--o{ FOOD_ENTRY : referenced_by
 
     FOOD_ITEM {
-        string id PK
-        string name
-        string category
-        string risk
-        string mercuryLevel
-        string contentVersion
+        string id PK "food.salmon.farmed"
+        string name "Farmed salmon"
+        string category "fish"
+        string risk "SAFE"
+        string mercuryLevel "LOW"
+        string contentVersion "1.0.0"
     }
     FOOD_ENTRY {
-        string id PK
-        string journeyId FK
-        string foodItemId FK
-        date loggedOn
-        string meal
-        string riskSnapshot
+        string id PK "01J8M4N5P6"
+        string journeyId FK "01J8Z3K4Q7"
+        string foodItemId FK "food.salmon.farmed"
+        date loggedOn "2026-06-01"
+        string meal "DINNER"
+        string riskSnapshot "SAFE"
     }
     CONDITION {
-        string id PK
-        string journeyId FK
-        string type
-        date diagnosedOn
-        boolean isActive
+        string id PK "01J8N7P8Q9"
+        string journeyId FK "01J8Z3K4Q7"
+        string type "GESTATIONAL_DIABETES"
+        date diagnosedOn "2026-06-10"
+        boolean isActive "true"
     }
 ```
 
@@ -215,19 +216,19 @@ erDiagram
     JOURNEY ||--o{ CONTRACTION_LOG : tracks
 
     KICK_SESSION {
-        string id PK
-        string journeyId FK
-        instant startedAt
-        instant endedAt
-        int kickCount
+        string id PK "01J8P1Q2R3"
+        string journeyId FK "01J8Z3K4Q7"
+        instant startedAt "2026-08-01T20:00:00Z"
+        instant endedAt "2026-08-01T20:30:00Z"
+        int kickCount "10"
     }
     CONTRACTION_LOG {
-        string id PK
-        string journeyId FK
-        instant startedAt
-        instant endedAt
-        int durationSeconds
-        string intensity
+        string id PK "01J8Q4R5S6"
+        string journeyId FK "01J8Z3K4Q7"
+        instant startedAt "2026-11-20T02:00:00Z"
+        instant endedAt "2026-11-20T02:01:00Z"
+        int durationSeconds "60"
+        string intensity "MODERATE"
     }
 ```
 
@@ -242,44 +243,44 @@ erDiagram
     JOURNEY ||--o{ HOSPITAL_BAG_ITEM : prepares
 
     EMERGENCY_CONTACT {
-        string id PK
-        int profileId FK
-        string name
-        string relationship
-        string phone
-        boolean isPrimary
+        string id PK "01J8R7S8T9"
+        int profileId FK "1"
+        string name "Alex Doe"
+        string relationship "Partner"
+        string phone "+1-555-0100"
+        boolean isPrimary "true"
     }
     APPOINTMENT {
-        string id PK
-        string journeyId FK
-        string title
-        string type
-        instant startsAt
-        string timeZone
-        string status
+        string id PK "01J8S1T2U3"
+        string journeyId FK "01J8Z3K4Q7"
+        string title "20-week scan"
+        string type "ULTRASOUND"
+        instant startsAt "2026-06-15T14:00:00Z"
+        string timeZone "America/New_York"
+        string status "SCHEDULED"
     }
     REMINDER {
-        string id PK
-        string journeyId FK
-        string type
-        string scheduleType
-        int intervalMinutes
-        boolean enabled
-        instant nextTriggerAt
+        string id PK "01J8T4U5V6"
+        string journeyId FK "01J8Z3K4Q7"
+        string type "HYDRATION"
+        string scheduleType "INTERVAL"
+        int intervalMinutes "120"
+        boolean enabled "true"
+        instant nextTriggerAt "2026-06-01T10:00:00Z"
     }
     SUPPLEMENT {
-        string id PK
-        string journeyId FK
-        string name
-        string schedule
-        boolean isActive
+        string id PK "01J8U7V8W9"
+        string journeyId FK "01J8Z3K4Q7"
+        string name "Folic acid"
+        string schedule "DAILY"
+        boolean isActive "true"
     }
     HOSPITAL_BAG_ITEM {
-        string id PK
-        string journeyId FK
-        string label
-        string category
-        boolean isPacked
+        string id PK "01J8V1W2X3"
+        string journeyId FK "01J8Z3K4Q7"
+        string label "Phone charger"
+        string category "essentials"
+        boolean isPacked "false"
     }
 ```
 
@@ -292,26 +293,26 @@ erDiagram
     MILESTONE_DEFINITION ||--o{ MILESTONE_ACHIEVEMENT : defines
 
     MILESTONE_DEFINITION {
-        string key PK
-        string title
-        string category
-        int windowStartMonths
-        int windowEndMonths
+        string key PK "social.first_smile"
+        string title "First social smile"
+        string category "SOCIAL"
+        int windowStartMonths "1"
+        int windowEndMonths "3"
     }
     MILESTONE_ACHIEVEMENT {
-        string id PK
-        string childId FK
-        string milestoneKey FK
-        date achievedOn
-        boolean concernFlag
+        string id PK "01J9C4D5E6"
+        string childId FK "01J9A1B2C3"
+        string milestoneKey FK "social.first_smile"
+        date achievedOn "2027-01-05"
+        boolean concernFlag "false"
     }
     GROWTH_MEASUREMENT {
-        string id PK
-        string childId FK
-        date measuredOn
-        double weightKg
-        double lengthCm
-        double headCircumferenceCm
+        string id PK "01J9D7E8F9"
+        string childId FK "01J9A1B2C3"
+        date measuredOn "2027-01-20"
+        double weightKg "5.2"
+        double lengthCm "58.0"
+        double headCircumferenceCm "39.5"
     }
 ```
 
@@ -326,41 +327,41 @@ erDiagram
     VACCINE_DEFINITION ||--o{ VACCINATION_RECORD : defines
 
     FEEDING_LOG {
-        string id PK
-        string childId FK
-        instant startedAt
-        instant endedAt
-        string type
-        int amountMl
+        string id PK "01J9E1F2G3"
+        string childId FK "01J9A1B2C3"
+        instant startedAt "2027-01-01T03:00:00Z"
+        instant endedAt "2027-01-01T03:20:00Z"
+        string type "BREAST_LEFT"
+        int amountMl "null"
     }
     DIAPER_LOG {
-        string id PK
-        string childId FK
-        instant occurredAt
-        string type
-        string consistency
+        string id PK "01J9F4G5H6"
+        string childId FK "01J9A1B2C3"
+        instant occurredAt "2027-01-01T04:00:00Z"
+        string type "WET"
+        string consistency "null"
     }
     SLEEP_LOG {
-        string id PK
-        string childId FK
-        instant startedAt
-        instant endedAt
-        string location
+        string id PK "01J9G7H8J9"
+        string childId FK "01J9A1B2C3"
+        instant startedAt "2027-01-01T22:00:00Z"
+        instant endedAt "2027-01-02T02:00:00Z"
+        string location "crib"
     }
     VACCINE_DEFINITION {
-        string key PK
-        string name
-        int doseNumber
-        int recommendedAgeMonths
-        string region
+        string key PK "us.dtap.1"
+        string name "DTaP"
+        int doseNumber "1"
+        int recommendedAgeMonths "2"
+        string region "US"
     }
     VACCINATION_RECORD {
-        string id PK
-        string childId FK
-        string vaccineKey FK
-        date dueOn
-        date administeredOn
-        string status
+        string id PK "01J9H1J2K3"
+        string childId FK "01J9A1B2C3"
+        string vaccineKey FK "us.dtap.1"
+        date dueOn "2027-01-20"
+        date administeredOn "2027-01-22"
+        string status "DONE"
     }
 ```
 
@@ -369,41 +370,41 @@ erDiagram
 ```mermaid
 erDiagram
     FOOD_ITEM {
-        string id PK
-        string name
-        string category
-        string risk
-        string contentVersion
+        string id PK "food.salmon.farmed"
+        string name "Farmed salmon"
+        string category "fish"
+        string risk "SAFE"
+        string contentVersion "1.0.0"
     }
     FRUIT_SIZE {
-        int week PK
-        string name
-        double lengthCm
-        double weightG
-        string contentVersion
+        int week PK "8"
+        string name "Raspberry"
+        double lengthCm "1.6"
+        double weightG "1.0"
+        string contentVersion "1.0.0"
     }
     WEEK_CONTENT {
-        int week PK
-        string title
-        string body
-        string contentVersion
+        int week PK "8"
+        string title "Week 8"
+        string body "Tiny but growing fast."
+        string contentVersion "1.0.0"
     }
     SYMPTOM_DEFINITION {
-        string key PK
-        string label
-        string category
-        boolean redFlag
+        string key PK "symptom.nausea"
+        string label "Nausea"
+        string category "digestive"
+        boolean redFlag "false"
     }
     MILESTONE_DEFINITION {
-        string key PK
-        string title
-        string category
+        string key PK "social.first_smile"
+        string title "First social smile"
+        string category "SOCIAL"
     }
     VACCINE_DEFINITION {
-        string key PK
-        string name
-        int doseNumber
-        string region
+        string key PK "us.dtap.1"
+        string name "DTaP"
+        int doseNumber "1"
+        string region "US"
     }
 ```
 
@@ -412,13 +413,13 @@ erDiagram
 ```mermaid
 erDiagram
     EXPORT_RECORD {
-        string id PK
-        instant createdAt
-        string fileName
-        string schemaVersion
-        string appVersion
-        boolean encrypted
-        string checksum
+        string id PK "01J9J4K5L6"
+        instant createdAt "2026-11-01T12:00:00Z"
+        string fileName "cocobean-2026-11-01.json"
+        string schemaVersion "1"
+        string appVersion "1.0.0"
+        boolean encrypted "true"
+        string checksum "sha256:ab12cd34"
     }
 ```
 
