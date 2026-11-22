@@ -36,7 +36,7 @@
 - [ ] GA, trimester, term calculations with tests.
 - [ ] Pregnancy dashboard: week, fruit, countdown, today's log.
 - [ ] Fruit content (40 weeks) + illustrations.
-- [ ] Daily log: symptoms, mood, weight, notes.
+- [ ] Daily log: symptoms, weight, notes; daily mood check-in.
 - [ ] Symptom catalog content.
 - [ ] Kick counter and contraction timer with red-flag copy.
 - [ ] Hospital bag checklist.

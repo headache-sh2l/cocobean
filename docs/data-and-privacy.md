@@ -79,7 +79,7 @@ manifest.
 | `cycle_profiles` | `journey_id` | — |
 | `cycle_entries` | `id`, `journey_id`, `start_on` | `journey_id, start_on` |
 | `ovulation_tests` | `id`, `journey_id`, `tested_on` | `journey_id, tested_on` |
-| `daily_logs` | `id`, `journey_id`, `logged_on` | unique `journey_id, logged_on` |
+| `daily_logs` | `id`, `journey_id`, `logged_on`, `mood_checkin_id` | unique `journey_id, logged_on` |
 | `food_items` | `id`, `name`, `risk` | FTS on `name`, `aliases` |
 | `food_entries` | `id`, `journey_id`, `logged_on` | `journey_id, logged_on` |
 | `conditions` | `id`, `journey_id`, `type` | `journey_id` |
@@ -96,7 +96,7 @@ manifest.
 | `sleep_logs` | `id`, `child_id`, `started_at` | `child_id, started_at` |
 | `vaccine_definitions` | `key` | `region` |
 | `vaccination_records` | `id`, `child_id`, `vaccine_key` | `child_id` |
-| `mood_checkins` | `id`, `journey_id`, `logged_on` | `journey_id, logged_on` |
+| `mood_checkins` | `id`, `journey_id`, `logged_on` | unique `journey_id, logged_on` |
 | `epds_assessments` | `id`, `journey_id`, `taken_on` | `journey_id, taken_on` |
 | `emergency_contacts` | `id`, `profile_id` | — |
 | `hospital_bag_items` | `id`, `journey_id` | `journey_id` |

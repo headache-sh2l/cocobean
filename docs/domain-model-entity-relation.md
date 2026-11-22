@@ -128,13 +128,14 @@ erDiagram
     JOURNEY ||--o{ ACTIVITY_LOG : logs
     JOURNEY ||--o{ MOOD_CHECKIN : logs
     JOURNEY ||--o{ EPDS_ASSESSMENT : completes
+    DAILY_LOG |o--o| MOOD_CHECKIN : "mood for the day"
     DAILY_LOG }o--o{ SYMPTOM_DEFINITION : references
 
     DAILY_LOG {
         string id PK "01J8F7G8H9"
         string journeyId FK "01J8Z3K4Q7"
         date loggedOn "2026-06-01"
-        int mood "4"
+        string moodCheckInId FK "01J8J7K8L9"
         int energy "3"
         double weightKg "68.4"
         double sleepHours "7.5"
@@ -159,6 +160,7 @@ erDiagram
         date loggedOn "2026-06-01"
         int score "4"
         string tags "calm"
+        string note "Felt anxious in the morning"
     }
     EPDS_ASSESSMENT {
         string id PK "01J8K1L2M3"
@@ -439,7 +441,7 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 | CycleProfile | user | Journey (1:1) | — |
 | CycleEntry | user | Journey | — |
 | OvulationTest | user | Journey | — |
-| DailyLog | user | Journey | SymptomDefinition (M:N) |
+| DailyLog | user | Journey, MoodCheckIn | SymptomDefinition (M:N) |
 | FoodItem | content | — | FoodEntry |
 | FoodEntry | user | Journey, FoodItem | — |
 | Condition | user | Journey | — |
@@ -456,7 +458,7 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 | SleepLog | user | Child | — |
 | VaccineDefinition | content | — | VaccinationRecord |
 | VaccinationRecord | user | Child, VaccineDefinition | — |
-| MoodCheckIn | user | Journey | — |
+| MoodCheckIn | user | Journey | DailyLog (1:1) |
 | EpdsAssessment | user | Journey | — |
 | EmergencyContact | user | Profile | — |
 | HospitalBagItem | user | Journey | — |
@@ -479,3 +481,5 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 - Deleting a `Child` requires deleting or reassigning its logs in one transaction.
 - No user data is written outside the app's private storage.
 - Every content row has a `sourceRef` and `reviewedOn`.
+- Mood is stored only in `MoodCheckIn`; a journey has at most one `MoodCheckIn` per day, and
+  `DailyLog.moodCheckInId` (if set) references it.

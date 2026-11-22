@@ -31,6 +31,7 @@ erDiagram
     JOURNEY ||--o{ CYCLE_ENTRY : logs
     JOURNEY ||--o{ OVULATION_TEST : logs
     JOURNEY ||--o{ DAILY_LOG : logs
+    DAILY_LOG |o--o| MOOD_CHECKIN : "mood for the day"
     JOURNEY ||--o{ FOOD_ENTRY : logs
     JOURNEY ||--o{ CONDITION : has
     JOURNEY ||--o{ APPOINTMENT : schedules
@@ -201,7 +202,7 @@ For smaller, per-domain diagrams (easier to read in the preview), see
 | `id` | String | |
 | `journeyId` | String | |
 | `loggedOn` | LocalDate | One per day per journey (upsert). |
-| `mood` | Int? | 1–5. |
+| `moodCheckInId` | String? | FK → MoodCheckIn. Null = no mood logged that day. |
 | `energy` | Int? | 1–5. |
 | `weightKg` | Double? | |
 | `sleepHours` | Double? | |
@@ -387,7 +388,11 @@ Record: `id`, `childId`, `vaccineKey`, `dueOn`, `administeredOn`, `status`
 
 ### 3.21. MoodCheckIn / EpdsAssessment
 
-MoodCheckIn: `id`, `journeyId`, `loggedOn`, `score` (1–5), `tags`, `note`.
+MoodCheckIn: `id`, `journeyId`, `loggedOn`, `score` (1–5), `tags`, `note`. This is the
+**single** mood record per journey per day; `DailyLog.moodCheckInId` links to it.
+
+**Rule:** mood is stored only here. `DailyLog` references the day's check-in via
+`moodCheckInId` and does not duplicate the score.
 
 EpdsAssessment:
 
@@ -541,6 +546,8 @@ stateDiagram-v2
 8. Deleting a `Child` requires deleting or reassigning its logs in one transaction.
 9. No user data is written outside the app's private storage.
 10. Every content row has a `sourceRef` and `reviewedOn`.
+11. Mood is stored only in `MoodCheckIn`; a journey has at most one `MoodCheckIn` per day,
+    and `DailyLog.moodCheckInId` (if set) references it.
 
 ## 6. Date and time semantics
 

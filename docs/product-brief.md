@@ -71,7 +71,7 @@ content, reminders, safety) and is the most differentiated.
   postpartum shown as "coming soon"), due-date setup, disclaimer.
 - Pregnancy journey: EDD from LMP/ultrasound/manual/IVF, gestational age, trimester,
   week-by-week dashboard, fruit comparison, countdown.
-- Daily log: symptoms, mood, weight, notes.
+- Daily log: symptoms, weight, notes; daily mood check-in.
 - Food Entry: logging food (free text; no food-safety database in MVP).
 - Kick counter and contraction timer, with red-flag copy.
 - Hospital bag checklist.
@@ -91,12 +91,13 @@ Entity mapping:
 | Profile | [3.1](domain-model.md#31-profile-singleton-id--1) | Local profile, units, theme, app lock, disclaimer |
 | Journey | [3.2](domain-model.md#32-journey) | Pregnancy journey container and stage |
 | PregnancyDetails | [3.3](domain-model.md#33-pregnancydetails-11-with-a-pregnancy-journey) | EDD (LMP/ultrasound/manual/IVF), GA inputs |
-| DailyLog | [3.9](domain-model.md#39-dailylog) | Symptoms, mood, weight, notes |
+| DailyLog | [3.9](domain-model.md#39-dailylog) | Symptoms, weight, sleep, notes |
 | FoodEntry | [3.11](domain-model.md#311-foodentry) | Food logging only (no risk/safety content) |
 | Appointment | [3.13](domain-model.md#313-appointment) | Local appointment list + calendar insert |
 | Reminder | [3.14](domain-model.md#314-reminder) | Hydration, activity, supplement, appointment reminders |
 | Supplement | [3.15](domain-model.md#315-supplement) | Supplement tracking |
 | HydrationLog / ActivityLog | [3.16](domain-model.md#316-hydrationlog--activitylog) | Hydration and activity logs |
+| MoodCheckIn | [3.21](domain-model.md#321-moodcheckin--epdsassessment) | Daily mood score, tags, note |
 | EmergencyContact | [3.22](domain-model.md#322-emergencycontact--hospitalbagitem) | Emergency contacts |
 | HospitalBagItem | [3.22](domain-model.md#322-emergencycontact--hospitalbagitem) | Hospital bag checklist |
 | ExportRecord | [3.23](domain-model.md#323-exportrecord) | Export/import metadata |
