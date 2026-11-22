@@ -15,12 +15,12 @@
 
 | ID | Question | Recommendation | Blocking |
 |---|---|---|---|
-| Q-01 | MVP scope | Pregnancy-first (Phases 0–3 + 5; food safety V1.1) | 🔴 |
+| Q-01 | MVP scope | Pregnancy-first, 5 features (onboarding, pregnancy journey, kick counter, appointments, hospital bag) | 🔴 |
 | Q-02 | Launch region | US first, region-aware architecture | 🔴 |
 | Q-03 | Clinical reviewer | Required before release; start sourcing now | 🔴 |
 | Q-04 | Content licensing | Original summaries + citations; no copied text | 🔴 |
 | Q-05 | Multiple journeys | Yes, from day one | 🔴 |
-| Q-06 | Loss support | Yes, in MVP | 🔴 |
+| Q-06 | Loss support | Post-MVP (moved out of MVP) | 🔴 |
 | Q-07 | Package / app ID | `app.cocobean` (or your domain) | 🔴 |
 | Q-08 | DB encryption | FBE + app lock + encrypted export; defer SQLCipher | 🟡 |
 | Q-09 | Monetization | Free, no ads, no IAP in MVP | 🟡 |
@@ -47,10 +47,17 @@
 - C. Planning-first.
 - D. Postpartum-first.
 
-**Recommendation: B.** Pregnancy exercises dates, content, reminders, and safety; it is
-the most differentiated; it keeps the content review burden manageable. MVP = Phases 0–3
-and 5; food safety (Phase 4) moves to V1.1, and planning/postpartum follow later. The
-**data model supports all three from day one**.
+**Recommendation: B.** Pregnancy exercises the hardest problems (dates and content) and is
+the most differentiated. The MVP is deliberately minimal: **onboarding, pregnancy journey,
+kick counter, appointments, and hospital bag checklist**. Everything else — daily log,
+food, reminders, export, settings, safety/emergency contacts, loss flow, contraction timer,
+planning, postpartum — is post-MVP. The **data model supports all three stages from day
+one**.
+
+> ⚠️ **Scope-change note:** this cut moves several previously-MVP items to post-MVP,
+> including loss support (Q-06), emergency contacts (Q-24), and export/import + data
+> deletion (Q-08/Q-15). Those are safety/privacy-sensitive; confirm the trade-off before
+> implementation.
 
 **Impact:** roadmap, content volume, release date.
 
@@ -124,8 +131,9 @@ after a loss. A single-stage model forces data deletion or a rewrite.
 - A. Yes, with a sensitive flow (recommended).
 - B. Defer; only live-birth paths.
 
-**Recommendation: A.** Loss is common and the app will be used by people it happens to.
-Shipping without it means cheerful notifications after a loss — a serious harm.
+**Recommendation: A (but now post-MVP).** Loss is common and the app will be used by
+people it happens to. The pared-down MVP moves it out of scope; if that stands, ship a
+minimal "pause reminders / sensitive copy" path so the app never celebrates after a loss.
 
 **Impact:** state machine, copy, notifications, content, testing.
 
@@ -336,9 +344,9 @@ claims, dosing, and treatment recommendations. Consult a lawyer for your jurisdi
 | ID | Question | Recommendation |
 |---|---|---|
 | Q-21 | Do we show weight gain ranges? | Optional, BMI-based, education only; never a target. |
-| Q-22 | Do we include a kick counter and contraction timer in MVP? | Yes, they are small and high-value; include red-flag copy. |
+| Q-22 | Do we include a kick counter and contraction timer in MVP? | Kick counter: yes. Contraction timer: post-MVP. |
 | Q-23 | Do we include a hospital bag checklist? | Yes, low cost, high perceived value. |
-| Q-24 | Do we include emergency contacts? | Yes, profile-level, no permissions needed. |
+| Q-24 | Do we include emergency contacts? | Post-MVP (moved out of MVP). |
 | Q-25 | Do we support twins at launch? | Data model yes; content minimal. |
 | Q-26 | Do we support adoption/surrogacy at launch? | Data model yes; content later. |
 | Q-27 | Do we show a "content reviewed on" date? | Yes, in About and on detail screens. |

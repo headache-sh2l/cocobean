@@ -2,8 +2,12 @@
 
 > Status: 🟡 Proposed. This is the document to read before writing a feature. If a
 > scenario here has no defined behavior, the feature is not done.
+>
+> **MVP scope:** MVP edge cases are onboarding (§1) and pregnancy dates (§2), plus the kick
+> counter, appointments, and hospital bag. Everything else is post-MVP. Note that the loss
+> flow (P-07/P-08) is now post-MVP. See [mvp.md](mvp.md).
 
-## 1. Onboarding and identity
+## 1. Onboarding and identity [MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -20,7 +24,7 @@
 | O-11 | User changes units | Display converts; stored values remain metric. |
 | O-12 | User has no Google Play services | App works; no Play-dependent features in core flows. |
 
-## 2. Pregnancy dates
+## 2. Pregnancy dates [MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -40,7 +44,7 @@
 | P-14 | DST fall-back at 01:30 | Reminder fires once, not twice. |
 | P-15 | User's due date is Feb 29 | Handle leap years; store `LocalDate`, not a month/day pair. |
 
-## 3. Cycle and fertility
+## 3. Cycle and fertility [Post-MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -57,7 +61,7 @@
 | C-11 | User transitions to pregnancy | Keep cycle history; pause cycle reminders; no data loss. |
 | C-12 | User returns to planning after a loss | New journey; old data readable; no reset. |
 
-## 4. Food safety
+## 4. Food safety [Post-MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -74,7 +78,7 @@
 | F-11 | User is in a different region | Food guidance is region-tagged; show the region and a disclaimer. |
 | F-12 | User logs a meal offline | Works; no network dependency. |
 
-## 5. Reminders and notifications
+## 5. Reminders and notifications [Post-MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -95,7 +99,7 @@
 | N-15 | User is in DND | Respect DND; do not bypass except for user-initiated emergency calls. |
 | N-16 | Lock screen shows health data | Hide sensitive content by default; user can enable previews. |
 
-## 6. Data, export, import
+## 6. Data, export, import [Post-MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -112,7 +116,7 @@
 | D-11 | Device storage is low | Warn before large operations; degrade gracefully. |
 | D-12 | App updated with a DB migration | Run migration; if it fails, block and prompt export, never wipe silently. |
 
-## 7. Postpartum and child data
+## 7. Postpartum and child data [Post-MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|
@@ -129,7 +133,7 @@
 | B-11 | User's child dies | Sensitive mode: pause reminders, memorial, no cheerful content. This must be designed, not improvised. |
 | B-12 | User changes a child's birth date | Recalculate age and milestone windows; keep logs. |
 
-## 8. Mental health
+## 8. Mental health [Post-MVP]
 
 | # | Scenario | Expected behavior |
 |---|---|---|

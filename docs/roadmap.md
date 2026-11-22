@@ -3,7 +3,7 @@
 > Status: 🟡 Proposed. The order is chosen to de-risk the hardest problems first and to
 > keep a shippable app at every phase.
 
-## Phase 0 — Decisions and foundations (1–2 weeks)
+## Phase 0 — Decisions and foundations (1–2 weeks) [MVP]
 
 **Goal:** no feature code until the contract is stable.
 
@@ -20,34 +20,37 @@
 
 ## Phase 1 — Onboarding and journeys (1–2 weeks)
 
-- [ ] Profile + DataStore.
-- [ ] Onboarding: welcome, name (optional), stage (pregnancy only; planning/postpartum
+- [ ] [MVP] Profile + DataStore.
+- [ ] [MVP] Onboarding: welcome, name (optional), stage (pregnancy only; planning/postpartum
   shown as "coming soon"), disclaimer.
-- [ ] Journey model + repository + primary journey.
-- [ ] App shell with stage-derived bottom nav.
-- [ ] Settings: units, theme, change stage, delete data.
-- [ ] Empty states for every tab.
+- [ ] [MVP] Journey model + repository + primary journey.
+- [ ] [MVP] App shell with stage-derived bottom nav.
+- [ ] [Post-MVP] Settings: units, theme, change stage, delete data.
+- [ ] [MVP] Empty states for every tab.
 
-**Exit:** a user can onboard into pregnancy and delete everything.
+**Exit:** a user can onboard into pregnancy.
 
 ## Phase 2 — Pregnancy core (2–3 weeks)
 
-- [ ] EDD setup: LMP, ultrasound, manual, IVF, "not sure".
-- [ ] GA, trimester, term calculations with tests.
-- [ ] Pregnancy dashboard: week, fruit, countdown, today's log.
-- [ ] Fruit content (40 weeks) + illustrations.
-- [ ] Daily log: symptoms, weight, notes; daily mood check-in.
-- [ ] Symptom catalog content.
-- [ ] Kick counter and contraction timer with red-flag copy.
-- [ ] Hospital bag checklist.
-- [ ] Emergency contacts and red-flag guidance.
-- [ ] Loss/termination flow: pause reminders, sensitive copy, no auto-advance.
-- [ ] EDD change flow with audit + banner.
-- [ ] Week-by-week content (first pass).
+- [ ] [MVP] EDD setup: LMP, ultrasound, manual, IVF, "not sure".
+- [ ] [MVP] GA, trimester, term calculations with tests.
+- [ ] [MVP] Pregnancy dashboard: week, fruit, countdown.
+- [ ] [MVP] Fruit content (40 weeks) + illustrations.
+- [ ] [MVP] Week-by-week content (first pass).
+- [ ] [MVP] EDD change flow with audit + banner.
+- [ ] [MVP] Kick counter with red-flag copy.
+- [ ] [MVP] Appointments: local list + optional system calendar insert.
+- [ ] [MVP] Hospital bag checklist.
+- [ ] [Post-MVP] Daily log: symptoms, weight, notes; daily mood check-in.
+- [ ] [Post-MVP] Symptom catalog content.
+- [ ] [Post-MVP] Contraction timer with red-flag copy.
+- [ ] [Post-MVP] Emergency contacts and red-flag guidance.
+- [ ] [Post-MVP] Loss/termination flow: pause reminders, sensitive copy, no auto-advance.
 
-**Exit:** a pregnant user can set up, see the correct week every day, and log daily.
+**Exit:** a pregnant user can set up, see the correct week every day, use the kick counter,
+add an appointment, and check the hospital bag.
 
-## Phase 3 — Reminders and notifications (2 weeks)
+## Phase 3 — Reminders and notifications (2 weeks) — post-MVP
 
 - [ ] Reminder model + CRUD.
 - [ ] Scheduler abstraction: WorkManager + AlarmManager.
@@ -74,7 +77,7 @@ and degrade visibly when permission is denied.
 **Exit:** a user can search any common food, understand the risk, and log a meal in ≤ 3
 taps.
 
-## Phase 5 — Export, import, privacy (1–2 weeks)
+## Phase 5 — Export, import, privacy (1–2 weeks) — post-MVP
 
 - [ ] JSON export with schema version and checksum.
 - [ ] Encrypted export (password).
@@ -86,7 +89,7 @@ taps.
 
 **Exit:** export → wipe → import restores everything on a real device.
 
-## Phase 6 — Planning to conceive (2 weeks)
+## Phase 6 — Planning to conceive (2 weeks) — post-MVP
 
 - [ ] Cycle profile + entries.
 - [ ] Predictions, fertile window, two-week wait.
@@ -96,7 +99,7 @@ taps.
 
 **Exit:** a user with irregular cycles sees honest ranges, not false certainty.
 
-## Phase 7 — Postpartum (3 weeks)
+## Phase 7 — Postpartum (3 weeks) — post-MVP
 
 - [ ] Birth recording + child record.
 - [ ] Milestones (CDC-based) with windows and red flags.
@@ -109,14 +112,14 @@ taps.
 
 **Exit:** a postpartum user can log a feed in ≤ 5 seconds and complete an EPDS safely.
 
-## Phase 8 — Polish and release (2 weeks)
+## Phase 8 — Polish and release (2 weeks) [MVP]
 
 - [ ] Accessibility audit and fixes.
 - [ ] Dark mode and 200% font pass.
 - [ ] Performance: startup, list scrolling, search.
 - [ ] Baseline profile.
 - [ ] Clinical content sign-off.
-- [ ] Beta with 10–20 users per stage.
+- [ ] Beta with 10–20 users (pregnancy).
 - [ ] Store listing, screenshots, data safety form.
 - [ ] Release.
 
@@ -124,13 +127,12 @@ taps.
 
 ## MVP cut line
 
-**Recommended MVP = Phases 0–3 and 5** (food safety, Phase 4, moves to V1.1). That is a
-complete pregnancy companion with reminders and trustworthy data ownership. Food safety
-follows in V1.1; planning and postpartum later.
+**MVP = Onboarding + Pregnancy journey + Kick counter + Appointments + Hospital bag
+checklist.** Everything else is post-MVP. See [mvp.md](mvp.md).
 
-Why: pregnancy exercises the hardest problems (dates, content, reminders, safety) and is
-the most differentiated. Shipping all three stages at once triples the content review
-burden and delays feedback.
+Why: this is the smallest slice that still exercises the hardest problems (dates and
+content) and is the most differentiated. Shipping more at once delays feedback and
+multiplies the content review burden.
 
 ## Dependencies
 

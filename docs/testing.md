@@ -2,6 +2,10 @@
 
 > Status: 🟡 Proposed. The app handles dates, health guidance, and reminders. Bugs are not
 > cosmetic; they erode trust.
+>
+> **MVP scope:** MVP tests cover onboarding, EDD/GA, the dashboard, kick counter,
+> appointments, and the hospital bag. Reminder, food, export, and postpartum tests are
+> post-MVP. See [mvp.md](mvp.md).
 
 ## 1. Test pyramid
 
@@ -14,20 +18,20 @@
 
 ## 2. What must be tested
 
-### 2.1. Date and clinical math
+### 2.1. Date and clinical math [MVP]
 
-- EDD from LMP, ultrasound, manual, IVF (day 3/5/6).
-- GA at boundaries: 0w0d, 13w6d, 14w0d, 27w6d, 28w0d, 37w0d, 42w0d.
-- Leap years, month ends, DST transitions.
-- EDD change recalculates GA and preserves logs.
-- Cycle average with outliers, irregular cycles, PCOS flag.
-- Fertile window with default and custom luteal phase.
-- Two-week wait boundaries.
-- EPDS scoring, including item 10 precedence.
-- Food risk with condition modifiers.
-- Unit conversion round-trips.
+- [MVP] EDD from LMP, ultrasound, manual, IVF (day 3/5/6).
+- [MVP] GA at boundaries: 0w0d, 13w6d, 14w0d, 27w6d, 28w0d, 37w0d, 42w0d.
+- [MVP] Leap years, month ends, DST transitions.
+- [MVP] EDD change recalculates GA and preserves logs.
+- [Post-MVP] Cycle average with outliers, irregular cycles, PCOS flag.
+- [Post-MVP] Fertile window with default and custom luteal phase.
+- [Post-MVP] Two-week wait boundaries.
+- [Post-MVP] EPDS scoring, including item 10 precedence.
+- [Post-MVP] Food risk with condition modifiers.
+- [MVP] Unit conversion round-trips.
 
-### 2.2. State machine
+### 2.2. State machine [MVP]
 
 - Every transition in `domain-model.md` §4.
 - Loss transition cancels reminders and never creates postpartum.
@@ -35,7 +39,7 @@
 - Primary journey uniqueness.
 - Deleting a journey cascades correctly and respects soft delete.
 
-### 2.3. Data
+### 2.3. Data [Post-MVP]
 
 - DAO queries: today's log, week range, search, upcoming appointments.
 - FTS search with aliases and typos.
@@ -44,7 +48,7 @@
 - Import rejects newer schema, corrupt checksum, and partial data.
 - Content version replacement keeps user snapshots.
 
-### 2.4. Notifications
+### 2.4. Notifications [Post-MVP]
 
 - Next-trigger calculation across quiet hours, DST, timezone, month boundaries.
 - Coalescing and minimum spacing.
@@ -52,7 +56,7 @@
 - Reschedule on boot/time change (Robolectric or instrumented).
 - Permission-denied state is surfaced.
 
-### 2.5. UI and accessibility
+### 2.5. UI and accessibility [MVP]
 
 - Every screen: loading, empty, error, content.
 - 200% font scaling: no clipping (screenshot tests).
@@ -125,16 +129,16 @@ Use for date invariants:
 
 ### Manual scenarios
 
-1. Onboard, set EDD, see correct week.
-2. Create a hydration reminder 10 minutes out; lock the phone; confirm it fires.
-3. Reboot; confirm the reminder still fires.
-4. Change timezone; confirm the reminder follows local time.
-5. Deny notification permission; confirm the in-app state.
-6. Log a high-risk food; confirm the gentle card.
-7. Export, wipe, import; confirm all data returns.
-8. Enable app lock; background; confirm lock.
-9. Enable 200% font; walk every screen.
-10. Enable TalkBack; complete onboarding and log a food entry.
+1. [MVP] Onboard, set EDD, see correct week.
+2. [Post-MVP] Create a hydration reminder 10 minutes out; lock the phone; confirm it fires.
+3. [Post-MVP] Reboot; confirm the reminder still fires.
+4. [Post-MVP] Change timezone; confirm the reminder follows local time.
+5. [Post-MVP] Deny notification permission; confirm the in-app state.
+6. [Post-MVP] Log a high-risk food; confirm the gentle card.
+7. [Post-MVP] Export, wipe, import; confirm all data returns.
+8. [Post-MVP] Enable app lock; background; confirm lock.
+9. [MVP] Enable 200% font; walk every screen.
+10. [MVP] Enable TalkBack; complete onboarding and add an appointment.
 
 ## 9. CI
 
@@ -162,7 +166,7 @@ Use for date invariants:
 - [ ] No P0/P1 bugs.
 - [ ] Clinical content reviewed and signed off.
 - [ ] Accessibility audit passed.
-- [ ] Export/import round-trip verified on a real device.
-- [ ] Notification matrix passed on at least 3 OEMs.
+- [ ] [Post-MVP] Export/import round-trip verified on a real device.
+- [ ] [Post-MVP] Notification matrix passed on at least 3 OEMs.
 - [ ] Privacy policy and disclaimer in place.
 - [ ] Play data safety form matches reality.

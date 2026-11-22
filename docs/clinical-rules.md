@@ -6,6 +6,10 @@
 >
 > **Implementation rule:** all thresholds live in one `ClinicalConstants` object, are
 > covered by unit tests, and are never hard-coded in Composables.
+>
+> **MVP scope:** only date arithmetic (§1), EDD (§2), gestational age/trimester/term (§3),
+> pregnancy content triggers (§5), and the kick counter (§9.2) ship in the MVP. Everything
+> else is post-MVP. See [mvp.md](mvp.md).
 
 ## 0. Safety posture
 
@@ -18,7 +22,7 @@
 4. Red-flag content is always reachable in ≤ 2 taps from any screen.
 5. No rule may tell a user to disregard a clinician's advice.
 
-## 1. Date arithmetic
+## 1. Date arithmetic [MVP]
 
 All date math uses `java.time.LocalDate` and an injected `Clock`.
 
@@ -36,7 +40,7 @@ fun gestationalAge(edd: LocalDate, today: LocalDate): GestationalAge {
   "talk to your provider" prompt. Do not induce panic.
 - Never compute GA from `today - lmp` when an EDD exists; the EDD is the source of truth.
 
-## 2. Estimated Due Date (EDD)
+## 2. Estimated Due Date (EDD) [MVP]
 
 ### 2.1. Sources and precedence
 
@@ -75,7 +79,7 @@ Common clinician revision thresholds (for copy only, not auto-decision):
 - Dashboard shows a setup card, not a fabricated week.
 - Offer: "I know my due date", "I know my last period", "I had a scan", "I'm not sure".
 
-## 3. Gestational age, trimester, term
+## 3. Gestational age, trimester, term [MVP]
 
 | Concept | Rule |
 |---|---|
@@ -93,7 +97,7 @@ Display format: `24w 3d`, with a secondary "Week 25" label where the product use
 "you are in week 25" means the 25th week is in progress. Pick one convention per screen
 and document it in the copy deck.
 
-## 4. Cycle and fertility (Planning)
+## 4. Cycle and fertility (Planning) [Post-MVP]
 
 ### 4.1. Cycle length
 
@@ -133,7 +137,7 @@ and document it in the copy deck.
 - Create a pregnancy journey; keep the planning journey as history.
 - Do not auto-delete cycle data.
 
-## 5. Pregnancy content triggers
+## 5. Pregnancy content triggers [MVP]
 
 | Trigger | Content |
 |---|---|
@@ -149,7 +153,7 @@ and document it in the copy deck.
 Content is **educational**, not a schedule of required care. Always add: "Your provider
 may follow a different schedule."
 
-## 6. Nutrition and supplements
+## 6. Nutrition and supplements [Post-MVP]
 
 ### 6.1. Supplements (content, not prescription)
 
@@ -183,7 +187,7 @@ The app may **track** what the user takes. It must not **recommend a dose**.
   education, not a target.
 - Never show a "you gained too much" message.
 
-## 7. Food safety
+## 7. Food safety [Post-MVP]
 
 ### 7.1. Risk levels
 
@@ -234,7 +238,7 @@ The app may **track** what the user takes. It must not **recommend a dose**.
   If you've already eaten it, don't panic — talk to your provider if you're worried."
 - Never block logging. The app is a record, not a gatekeeper.
 
-## 8. Hydration and activity
+## 8. Hydration and activity [Post-MVP]
 
 ### 8.1. Hydration
 
@@ -253,9 +257,9 @@ The app may **track** what the user takes. It must not **recommend a dose**.
   provider before starting."
 - Postpartum: pelvic floor and gentle walking content; C-section recovery notes.
 
-## 9. Contraction timer and kick counter
+## 9. Contraction timer [Post-MVP] and kick counter [MVP]
 
-### 9.1. Contraction timer
+### 9.1. Contraction timer [Post-MVP]
 
 - Records start/end, duration, frequency, intensity.
 - Displays the **5-1-1** pattern: contractions every 5 minutes, lasting 1 minute, for
@@ -265,7 +269,7 @@ The app may **track** what the user takes. It must not **recommend a dose**.
 - If ≥ 37w0d and 5-1-1 met: "It may be time to call your provider."
 - Never says "you are in labor."
 
-### 9.2. Kick counter
+### 9.2. Kick counter [MVP]
 
 - Session: count movements until 10, or 2 hours, whichever comes first.
 - If fewer than 10 in 2 hours: "Contact your provider today." Do not say "your baby is
@@ -273,7 +277,7 @@ The app may **track** what the user takes. It must not **recommend a dose**.
 - If the user reports reduced movement at any time: immediate red-flag card.
 - Sessions are local only; no sharing.
 
-## 10. Postpartum milestones
+## 10. Postpartum milestones [Post-MVP]
 
 - Source: CDC "Learn the Signs. Act Early." (public domain in the US; verify before
   shipping) or an equivalent reviewed source for the user's region.
@@ -284,15 +288,15 @@ The app may **track** what the user takes. It must not **recommend a dose**.
 - Preterm: use adjusted age until 24 months (chronological age − weeks premature).
 - Never compare children or show percentiles as a score.
 
-## 11. Growth measurements
+## 11. Growth measurements [Post-MVP]
 
-- MVP: log weight, length, head circumference; plot a simple trend.
+- Post-MVP: log weight, length, head circumference; plot a simple trend.
 - Percentiles require WHO (0–2y) / CDC (2y+) LMS tables. Defer to V1.1.
 - When percentiles ship: show the curve, the child's point, and "discuss with your
   pediatrician." Never label a child "underweight" or "failing to thrive."
 - Unit conversion: kg ↔ lb, cm ↔ in, at display time only; store metric.
 
-## 12. Vaccination schedule
+## 12. Vaccination schedule [Post-MVP]
 
 - Region-specific. `Profile.region` selects the schedule.
 - US: CDC/ACIP schedule. UK: NHS schedule. Others: defer or show "ask your provider."
@@ -300,7 +304,7 @@ The app may **track** what the user takes. It must not **recommend a dose**.
 - Copy: "This is the general schedule for your region. Your pediatrician may adjust it."
 - Never mark a dose "overdue" in red; use "due" and "talk to your provider."
 
-## 13. Mental health (EPDS)
+## 13. Mental health (EPDS) [Post-MVP]
 
 ### 13.1. Instrument
 
@@ -332,7 +336,7 @@ The app may **track** what the user takes. It must not **recommend a dose**.
 - No toxic positivity. No "just relax."
 - Offer concrete next steps: talk to provider, call a helpline, tell one person.
 
-## 14. Red flags and escalation
+## 14. Red flags and escalation [Post-MVP]
 
 Show a persistent, reachable "Get help now" entry point. Trigger cards for:
 

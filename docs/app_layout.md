@@ -5,6 +5,10 @@
 > [clinical-rules.md](clinical-rules.md), and [architecture.md](architecture.md).
 > Where this document conflicts with those, they win. See [README.md](README.md) for the
 > full document map.
+>
+> **MVP scope:** Onboarding, pregnancy journey, kick counter, appointments, and hospital
+> bag checklist. Screens marked `[MVP]` ship in the MVP; everything else is post-MVP. See
+> [mvp.md](mvp.md).
 
 This document outlines the UI component hierarchy, screen layouts, navigation structure, and design system for the **Cocobean** app, strictly adhering to the user flows defined in [userflow.md](userflow.md).
 
@@ -54,14 +58,14 @@ flowchart TD
 
 ## 2. Onboarding Screens
 
-### 2.1. Welcome & Account Setup (`WelcomeScreen.kt`, `NameInputScreen.kt`)
+### 2.1. Welcome & Account Setup (`WelcomeScreen.kt`, `NameInputScreen.kt`) [MVP]
 - **Layout (`Column` with `Material3` Cards & TextFields)**:
   - App Logo & Warm Greeting ("Welcome to Cocobean").
   - `OutlinedTextField` for User Name.
   - Optional `OutlinedTextField` for Baby Nickname (e.g., "Little Bean", "Peanut").
   - Primary Action Button: `Button("Continue")`.
 
-### 2.2. Stage Selection Screen (`StageSelectionScreen.kt`)
+### 2.2. Stage Selection Screen (`StageSelectionScreen.kt`) [MVP]
 - **Layout (`LazyColumn` or vertical stack of selectable cards)**:
   - Header: *"Where are you on your journey?"*
   - Card 1: **Planning to Conceive** (Icon: Seedling, Description: Track ovulation, cycle, and conception nutrition).
@@ -74,7 +78,7 @@ flowchart TD
 
 ## 3. Stage-Specific UI Layouts & Component Hierarchies
 
-### 3.1. 👨‍🍼 Planning to Conceive Layout
+### 3.1. 👨‍🍼 Planning to Conceive Layout [Post-MVP]
 - **Bottom Nav Tabs**: `[ Dashboard ] [ Cycle / Ovulation ] [ Nutrition ] [ Reminders ]`
 - **Dashboard Screen**:
   - Current cycle day indicator.
@@ -90,29 +94,33 @@ flowchart TD
 
 ---
 
-### 3.2. 🤱 Pregnant Layout
-- **Bottom Nav Tabs**: `[ Growth Dashboard ] [ Reminders ] [ Healthcare ] [ Food Safety ]`
-- **Growth Dashboard Screen (`PregnancyDashboardScreen.kt`)**:
+### 3.2. 🤱 Pregnant Layout [MVP]
+- **Bottom Nav Tabs (MVP)**: `[ Growth Dashboard ] [ Kick Counter ] [ Appointments ] [ Hospital Bag ]`
+- **Post-MVP tabs**: Reminders, Food Safety.
+- **Growth Dashboard Screen (`PregnancyDashboardScreen.kt`)** [MVP]:
   - **Hero Card**: Gestational age (e.g., *Week 24 • 3 months to go*).
   - **Fruit Visual Comparison**: Large graphic card showing baby size (e.g., *"Your baby is the size of an ear of corn / papaya"* with an illustration).
   - **Countdown Widget**: Days remaining until due date.
-  - **Quick Daily Log**: Symptoms (morning sickness, energy), mood, and weight.
-- **Prenatal Reminders Screen (`PrenatalRemindersScreen.kt`)**:
+  - **Quick Daily Log** [Post-MVP]: Symptoms (morning sickness, energy), mood, and weight.
+- **Kick Counter Screen (`KickCounterScreen.kt`)** [MVP]:
+  - Start/stop a session; count movements toward 10 within 2 hours.
+  - Red-flag copy if fewer than 10 in 2 hours ("contact your provider today").
+- **Prenatal Reminders Screen (`PrenatalRemindersScreen.kt`)** [Post-MVP]:
   - **Hydration Tracker**: 2-hour interval reminder toggle & glass count progress bar.
   - **Activity & Walking Tracker**: 4-hour interval walking / gentle movement reminder board.
   - **Supplement Schedule**: Prenatal vitamins, iron, calcium checklists.
-- **Healthcare & Appointments Screen (`HealthcareAppointmentsScreen.kt`)**:
+- **Healthcare & Appointments Screen (`HealthcareAppointmentsScreen.kt`)** [MVP]:
   - Calendar view highlighting upcoming ultrasounds, doctor visits, and lab tests.
   - "Add to calendar" button (one-way insert into the system calendar; no two-way sync).
-  - Emergency contacts and hospital bag checklist.
-- **Food Safety & Condition Tracker (`FoodSafetyTrackerScreen.kt`)** — *deferred to V1.1; not in the MVP cut*:
+  - Hospital bag checklist [MVP]; emergency contacts [Post-MVP].
+- **Food Safety & Condition Tracker (`FoodSafetyTrackerScreen.kt`)** [Post-MVP]:
   - **Searchable Food Safety Lookup**: Search any food item instantly (Safe, Moderate, Avoid).
   - **Condition Toggles**: e.g. gestational diabetes mode, which adjusts food notes and enables a glucose log. The app records what the user's provider recommends; it does not set intake limits.
   - **Meal Logger**: Log breakfast, lunch, dinner with nutritional impact notes.
 
 ---
 
-### 3.3. 👶 Postpartum Layout
+### 3.3. 👶 Postpartum Layout [Post-MVP]
 - **Bottom Nav Tabs**: `[ Milestones ] [ Newborn Growth ] [ Health & PPD ] [ Reminders ]`
 - **Postpartum Milestones Screen (`PostpartumMilestonesScreen.kt`)**:
   - Baby age counter (e.g., *6 weeks old*).

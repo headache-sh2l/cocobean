@@ -2,6 +2,9 @@
 
 > Status: 🟡 Proposed. The current `Theme.kt` still uses the Compose template purple and
 > dynamic color. Replace it before building screens.
+>
+> **MVP scope:** the design system applies to the MVP screens. Components for post-MVP
+> features (food risk badges, hydration rings, etc.) are not built yet. See [mvp.md](mvp.md).
 
 ## 1. Brand attributes
 
@@ -65,7 +68,7 @@ colors and are used for containers, illustrations, and large shapes. They do **n
 4.5:1 with white text, so text-bearing buttons and badges use the darker accessible
 variants above (`#B5675F`, `#B26A00`). Do not "fix" this by shrinking the text.
 
-## 3. Typography
+## 3. Typography [MVP]
 
 Use the system font (Roboto) for MVP; a custom font is a later brand decision.
 

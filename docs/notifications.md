@@ -1,7 +1,11 @@
-# Notifications and Reminders
+# Notifications and Reminders [Post-MVP]
 
 > Status: 🟡 Proposed. Reminders are a core promise. A reminder that silently stops is
 > worse than no reminder, because the user trusts it.
+>
+> **MVP scope:** notifications and reminders are **post-MVP**. The MVP has no reminder
+> scheduling; appointments are a local list with an optional one-way calendar insert. See
+> [mvp.md](mvp.md).
 
 ## 1. Requirements
 
@@ -174,7 +178,7 @@ interface ReminderScheduler {
 
 ## 10. Open questions
 
-- Do we need exact alarms at all in MVP? (Recommend: only for appointments, with
+- Do we need exact alarms at all post-MVP? (Recommend: only for appointments, with
   inexact fallback.)
 - Do we request battery optimization exemption? (Recommend: explain, don't force.)
 - Do we support "critical" reminders that bypass DND? (Recommend: no, except a

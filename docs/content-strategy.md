@@ -5,11 +5,13 @@
 
 ## 1. Content types
 
+Rows marked `[MVP]` ship in the MVP; everything else is post-MVP. See [mvp.md](mvp.md).
+
 | Type | Examples | Volume (MVP) | Update cadence |
 |---|---|---|---|
 | Food safety | Salmon, brie, deli turkey, herbal tea | 300–500 items (V1.1) | Quarterly review |
-| Fruit/vegetable size | Poppy seed → watermelon | 40 weeks | Annual |
-| Week-by-week pregnancy | What's developing, what you may feel | 40 weeks | Annual |
+| Fruit/vegetable size [MVP] | Poppy seed → watermelon | 40 weeks | Annual |
+| Week-by-week pregnancy [MVP] | What's developing, what you may feel | 40 weeks | Annual |
 | Milestones | First smile, first steps | ~60 items | Annual |
 | Vaccines | DTaP, MMR, flu | Region-specific | Annual |
 | Red flags | Preeclampsia signs, reduced movement | ~20 | Annual |

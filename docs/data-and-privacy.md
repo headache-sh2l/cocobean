@@ -68,12 +68,14 @@ manifest.
 
 ### 4.2. Tables
 
+Tables marked `[MVP]` ship in the MVP; everything else is post-MVP. See [mvp.md](mvp.md).
+
 | Table | Key columns | Indices |
 |---|---|---|
-| `profile` | `id=1` | — |
-| `journeys` | `id`, `type`, `status`, `is_primary` | `is_primary`, `type` |
-| `pregnancy_details` | `journey_id` | — |
-| `edd_history` | `id`, `journey_id`, `changed_at` | `journey_id` |
+| `profile` [MVP] | `id=1` | — |
+| `journeys` [MVP] | `id`, `type`, `status`, `is_primary` | `is_primary`, `type` |
+| `pregnancy_details` [MVP] | `journey_id` | — |
+| `edd_history` [MVP] | `id`, `journey_id`, `changed_at` | `journey_id` |
 | `postpartum_details` | `journey_id` | — |
 | `children` | `id`, `birth_on` | `birth_on` |
 | `cycle_profiles` | `journey_id` | — |
@@ -81,13 +83,17 @@ manifest.
 | `ovulation_tests` | `id`, `journey_id`, `tested_on` | `journey_id, tested_on` |
 | `daily_logs` | `id`, `journey_id`, `logged_on`, `mood_checkin_id` | unique `journey_id, logged_on` |
 | `food_items` | `id`, `name`, `risk` | FTS on `name`, `aliases` |
+| `fruit_sizes` [MVP] | `week` | — |
+| `week_content` [MVP] | `week` | — |
 | `food_entries` | `id`, `journey_id`, `logged_on` | `journey_id, logged_on` |
 | `conditions` | `id`, `journey_id`, `type` | `journey_id` |
-| `appointments` | `id`, `journey_id`, `starts_at` | `journey_id, starts_at` |
+| `appointments` [MVP] | `id`, `journey_id`, `starts_at` | `journey_id, starts_at` |
 | `reminders` | `id`, `journey_id`, `next_trigger_at` | `journey_id`, `enabled` |
 | `supplements` | `id`, `journey_id` | `journey_id` |
 | `hydration_logs` | `id`, `journey_id`, `logged_on` | `journey_id, logged_on` |
 | `activity_logs` | `id`, `journey_id`, `logged_on` | `journey_id, logged_on` |
+| `kick_sessions` [MVP] | `id`, `journey_id`, `started_at` | `journey_id, started_at` |
+| `contraction_logs` [Post-MVP] | `id`, `journey_id`, `started_at` | `journey_id, started_at` |
 | `milestone_definitions` | `key` | — |
 | `milestone_achievements` | `id`, `child_id`, `milestone_key` | `child_id` |
 | `growth_measurements` | `id`, `child_id`, `measured_on` | `child_id, measured_on` |
@@ -97,9 +103,10 @@ manifest.
 | `vaccine_definitions` | `key` | `region` |
 | `vaccination_records` | `id`, `child_id`, `vaccine_key` | `child_id` |
 | `mood_checkins` | `id`, `journey_id`, `logged_on` | unique `journey_id, logged_on` |
+| `symptom_definitions` [Post-MVP] | `key` | — |
 | `epds_assessments` | `id`, `journey_id`, `taken_on` | `journey_id, taken_on` |
 | `emergency_contacts` | `id`, `profile_id` | — |
-| `hospital_bag_items` | `id`, `journey_id` | `journey_id` |
+| `hospital_bag_items` [MVP] | `id`, `journey_id` | `journey_id` |
 | `export_records` | `id`, `created_at` | — |
 
 ### 4.3. Migrations
@@ -126,8 +133,9 @@ manifest.
 | `FLAG_SECURE` | Blocks screenshots/recents preview | User cannot screenshot their own data |
 | Encrypted export | Protects shared backups | User must remember password |
 
-**Recommendation:** ship app lock + encrypted export in MVP; defer SQLCipher until there
-is a clear threat requirement. Revisit in `open-questions.md` Q-08.
+**Recommendation:** app lock + encrypted export are **post-MVP** (moved out of the MVP);
+defer SQLCipher until there is a clear threat requirement. Revisit in `open-questions.md`
+Q-08.
 
 ### 5.3. Key management
 

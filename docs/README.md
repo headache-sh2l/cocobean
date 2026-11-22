@@ -35,6 +35,7 @@ When documents disagree, the higher document wins until the lower one is updated
 | Doc | Answers | Status |
 |---|---|---|
 | [product-brief.md](product-brief.md) | Why does this exist? Who is it for? What is in/out of scope? | 🟡 Proposed |
+| [mvp.md](mvp.md) | The 5-feature MVP cut and what is post-MVP | 🟡 Proposed |
 | [domain-model.md](domain-model.md) | What are the nouns? How do they relate? What must always be true? | 🟡 Proposed |
 | [domain-model-entity-relation.md](domain-model-entity-relation.md) | Visual ER diagrams (split by domain) for the data model | 🟡 Proposed |
 | [clinical-rules.md](clinical-rules.md) | How do we calculate EDD, gestational age, fertility, risk, EPDS? | 🟡 Needs clinician review |
@@ -49,6 +50,8 @@ When documents disagree, the higher document wins until the lower one is updated
 | [open-questions.md](open-questions.md) | What still needs a human decision? | 🔴 Blocking items |
 
 **Legend:** ✅ decided · 🟡 proposed, needs confirmation · 🔴 open/blocking · ⏸ deferred
+
+**MVP markers:** `[MVP]` = ships in the MVP; `[Post-MVP]` = deferred. See [mvp.md](mvp.md).
 
 ## Reading order for a new contributor
 

@@ -64,9 +64,15 @@ Everything else is **user data**.
 For smaller, per-domain diagrams (easier to read in the preview), see
 [domain-model-entity-relation.md](domain-model-entity-relation.md).
 
+**MVP entities:** `Profile`, `Journey`, `PregnancyDetails`, `Appointment`,
+`HospitalBagItem`, `FruitSize`, `WeekContent`, `KickSession`. Everything else is post-MVP.
+See [mvp.md](mvp.md).
+
 ## 3. Entities
 
-### 3.1. Profile (singleton, `id = 1`)
+Entities marked `[MVP]` ship in the MVP; everything else is post-MVP. See [mvp.md](mvp.md).
+
+### 3.1. Profile (singleton, `id = 1`) [MVP]
 
 | Field | Type | Notes |
 |---|---|---|
@@ -86,7 +92,7 @@ For smaller, per-domain diagrams (easier to read in the preview), see
 | `contentVersion` | String | Installed content DB version. |
 | `lastExportAt` | Instant? | Nudge only, never nag. |
 
-### 3.2. Journey
+### 3.2. Journey [MVP]
 
 | Field | Type | Notes |
 |---|---|---|
@@ -110,7 +116,7 @@ For smaller, per-domain diagrams (easier to read in the preview), see
 - `isPrimary` is unique per profile. Switching primary is an explicit user action.
 - Ending a journey never deletes it. Deletion is a separate, confirmed action.
 
-### 3.3. PregnancyDetails (1:1 with a `PREGNANCY` journey)
+### 3.3. PregnancyDetails (1:1 with a `PREGNANCY` journey) [MVP]
 
 | Field | Type | Notes |
 |---|---|---|
@@ -256,7 +262,7 @@ for this yet — ask your provider."
 | `isActive` | Boolean | |
 | `notes` | String? | |
 
-### 3.13. Appointment
+### 3.13. Appointment [MVP]
 
 | Field | Type | Notes |
 |---|---|---|
@@ -406,7 +412,7 @@ EpdsAssessment:
 | `item10Score` | Int | Self-harm item. |
 | `actionShown` | String? | Which escalation was displayed. |
 
-### 3.22. EmergencyContact / HospitalBagItem
+### 3.22. EmergencyContact [Post-MVP] / HospitalBagItem [MVP]
 
 EmergencyContact: `id`, `profileId`, `name`, `relationship`, `phone`, `isPrimary`.
 
@@ -417,7 +423,7 @@ HospitalBagItem: `id`, `journeyId`, `label`, `category`, `isPacked`, `isCustom`.
 `id`, `createdAt`, `fileName`, `schemaVersion`, `appVersion`, `encrypted`, `checksum`,
 `recordCounts` (JSON).
 
-### 3.24. FruitSize / WeekContent (content)
+### 3.24. FruitSize / WeekContent (content) [MVP]
 
 FruitSize:
 
@@ -462,7 +468,7 @@ precision.
 
 `DailyLog.symptoms` stores these stable keys.
 
-### 3.26. KickSession / ContractionLog
+### 3.26. KickSession [MVP] / ContractionLog [Post-MVP]
 
 KickSession:
 

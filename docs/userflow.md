@@ -4,10 +4,14 @@
 > [product-brief.md](product-brief.md), [domain-model.md](domain-model.md), and
 > [clinical-rules.md](clinical-rules.md). Unhappy paths and sensitive scenarios are in
 > [edge-cases.md](edge-cases.md). See [README.md](README.md) for the document map.
+>
+> **MVP scope:** the MVP journeys are the Main Entry Point (onboarding) and the Pregnant
+> Flow (pregnancy journey), plus the kick counter, appointments, and hospital bag. The
+> Planning, Postpartum, and Food Safety flows are post-MVP. See [mvp.md](mvp.md).
 
 This document documents the user journey flow for the Cocobean application, including detailed user flows for each pregnancy stage.
 
-## 📍 Main Entry Point
+## 📍 Main Entry Point [MVP]
 
 ```mermaid
 flowchart TD
@@ -21,7 +25,7 @@ flowchart TD
     E --> H[Postpartum]
 ```
 
-## 👨‍🍼 Planning to Conceive Flow
+## 👨‍🍼 Planning to Conceive Flow [Post-MVP]
 
 ### Overview
 ```mermaid
@@ -53,7 +57,7 @@ flowchart TD
    - Track tests and nutrition during this critical window
    - Option to transition to "pregnant" flow upon positive pregnancy test
 
-## 🤱 Pregnant Flow
+## 🤱 Pregnant Flow [MVP]
 
 ### Overview
 ```mermaid
@@ -91,13 +95,13 @@ flowchart TD
    - Immunization schedule reminders
    - Add appointments to the system calendar (one-way insert).
 
-4. **Food Safety & Risk Tracking**
+4. **Food Safety & Risk Tracking** [Post-MVP]
    - Input food intake
    - Select pregnancy-specific conditions (gestational diabetes, etc.)
    - Track glucose/sugar/salt intake
    - Safety categorization (Safe/Moderate/Avoid)
 
-## 👶 Postpartum Flow
+## 👶 Postpartum Flow [Post-MVP]
 
 ### Overview
 ```mermaid
@@ -133,7 +137,7 @@ flowchart TD
    - Exercise progression for new moms
    - Self-care and mental wellness
 
-## 🔄 Navigation Between Stages
+## 🔄 Navigation Between Stages [Post-MVP]
 
 ```mermaid
 flowchart TD

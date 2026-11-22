@@ -2,7 +2,8 @@
 
 > Companion to [domain-model.md](domain-model.md). The authoritative field definitions,
 > rules, and invariants live there; this file is a visual index. Field lists here are
-> abbreviated (keys + the most important columns).
+> abbreviated (keys + the most important columns). MVP entities are marked `[MVP]` in the
+> relationship matrix.
 
 ## Why several small diagrams instead of one big one?
 
@@ -433,9 +434,9 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 
 | Entity | Kind | Parent / FK | Related entities |
 |---|---|---|---|
-| Profile | user | — | Journey, EmergencyContact |
-| Journey | user | Profile.primaryJourneyId | PregnancyDetails, PostpartumDetails, CycleProfile, CycleEntry, OvulationTest, DailyLog, FoodEntry, Condition, Appointment, Reminder, Supplement, HydrationLog, ActivityLog, MoodCheckIn, EpdsAssessment, HospitalBagItem, KickSession, ContractionLog, Child |
-| PregnancyDetails | user | Journey (1:1) | — |
+| Profile [MVP] | user | — | Journey, EmergencyContact |
+| Journey [MVP] | user | Profile.primaryJourneyId | PregnancyDetails, PostpartumDetails, CycleProfile, CycleEntry, OvulationTest, DailyLog, FoodEntry, Condition, Appointment, Reminder, Supplement, HydrationLog, ActivityLog, MoodCheckIn, EpdsAssessment, HospitalBagItem, KickSession, ContractionLog, Child |
+| PregnancyDetails [MVP] | user | Journey (1:1) | — |
 | PostpartumDetails | user | Journey (1:1), Child | — |
 | Child | user | Journey (1:1) | MilestoneAchievement, GrowthMeasurement, FeedingLog, DiaperLog, SleepLog, VaccinationRecord |
 | CycleProfile | user | Journey (1:1) | — |
@@ -445,7 +446,7 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 | FoodItem | content | — | FoodEntry |
 | FoodEntry | user | Journey, FoodItem | — |
 | Condition | user | Journey | — |
-| Appointment | user | Journey | — |
+| Appointment [MVP] | user | Journey | — |
 | Reminder | user | Journey (nullable) | — |
 | Supplement | user | Journey | — |
 | HydrationLog | user | Journey | — |
@@ -461,12 +462,12 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 | MoodCheckIn | user | Journey | DailyLog (1:1) |
 | EpdsAssessment | user | Journey | — |
 | EmergencyContact | user | Profile | — |
-| HospitalBagItem | user | Journey | — |
+| HospitalBagItem [MVP] | user | Journey | — |
 | ExportRecord | user | — | — |
-| FruitSize | content | — | — |
-| WeekContent | content | — | — |
+| FruitSize [MVP] | content | — | — |
+| WeekContent [MVP] | content | — | — |
 | SymptomDefinition | content | — | DailyLog (M:N) |
-| KickSession | user | Journey | — |
+| KickSession [MVP] | user | Journey | — |
 | ContractionLog | user | Journey | — |
 
 ## Key invariants (see [domain-model.md §5](domain-model.md#5-invariants))

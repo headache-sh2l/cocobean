@@ -2,6 +2,10 @@
 
 > Status: 🟡 Proposed. Optimized for a small team and a long-lived offline app, not for
 > resume-driven complexity.
+>
+> **MVP scope:** the MVP builds only onboarding, the pregnancy journey, kick counter,
+> appointments, and the hospital bag checklist. The architecture below is unchanged; the
+> module strategy (§2) is the MVP shape. See [mvp.md](mvp.md).
 
 ## 1. Principles
 
@@ -13,7 +17,7 @@
 4. **Fail visibly, recover gracefully.** Missing data shows a setup prompt, not a crash.
 5. **Boring technology.** Stable libraries, no alpha navigation frameworks in the MVP.
 
-## 2. Module strategy
+## 2. Module strategy [MVP]
 
 **MVP: single Gradle module (`:app`) with enforced package boundaries.**
 
@@ -198,7 +202,7 @@ that require internet.
 
 - Room indices on `journeyId`, `loggedOn`, `childId`, `startsAt`.
 - FTS4/FTS5 virtual table for food search.
-- Paging 3 for long logs (or simple `LIMIT` queries in MVP).
+- Paging 3 for long logs (or simple `LIMIT` queries post-MVP).
 - Compose: stable data classes, `key` in lists, avoid recomposition-heavy lambdas.
 - Content DB loaded once at startup on `Dispatchers.IO`; search on a background thread.
 - Baseline profile after MVP.
