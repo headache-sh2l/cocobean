@@ -4,7 +4,7 @@
 > post-MVP. The canonical cut lives in
 > [product-brief.md §6.1](product-brief.md#61-mvp-recommended-cut).
 
-## In the MVP (6 features)
+## In the MVP (7 features)
 
 1. **Onboarding** — local profile, stage selection (pregnancy only; planning/postpartum
    shown as "coming soon"), due-date setup, disclaimer.
@@ -14,6 +14,7 @@
 4. **Appointments** — local list + optional system calendar insert.
 5. **Hospital bag checklist.**
 6. **Birth plan** — common topics with a "considered" toggle and the user's chosen options.
+7. **Pause Journey / Sensitive Mode** — minimal toggle to instantly halt active reminders and switch app tone to gentle, neutral copy (mitigating insensitive notifications after a loss).
 
 ## MVP entities
 
@@ -36,7 +37,7 @@
 - Export/import (`ExportRecord`)
 - Settings (units, theme, app lock, data deletion, about)
 - Safety: emergency contacts, red-flag guidance (`EmergencyContact`)
-- Loss/termination flow
+- Full Loss/termination workflow (minimal pause/sensitive mode is included in MVP)
 - Contraction timer (`ContractionLog`)
 - Planning to conceive (`CycleProfile`, `CycleEntry`, `OvulationTest`)
 - Postpartum (`PostpartumDetails`, `Child`, milestones, growth, feeding/diaper/sleep,
@@ -51,8 +52,7 @@
 
 ## Risks of this cut
 
-- **Loss/termination flow** is post-MVP. Shipping without it risks cheerful notifications
-  after a loss. Consider keeping a minimal "pause reminders / sensitive copy" path.
+- **Full loss/termination workflow** is post-MVP (though a minimal pause/sensitive mode is in MVP).
 - **Emergency contacts and red-flag guidance** are post-MVP. The product brief promises
   "call your provider" guidance; confirm this is acceptable.
 - **Export/import and data deletion** are post-MVP. This weakens the "user owns the data"
