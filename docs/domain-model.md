@@ -60,6 +60,9 @@ erDiagram
 and `SYMPTOM_DEFINITION` are **content** tables (bundled, read-only, versioned).
 Everything else is **user data**.
 
+For smaller, per-domain diagrams (easier to read in the preview), see
+[domain-model-entity-relation.md](domain-model-entity-relation.md).
+
 ## 3. Entities
 
 ### 3.1. Profile (singleton, `id = 1`)

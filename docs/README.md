@@ -36,6 +36,7 @@ When documents disagree, the higher document wins until the lower one is updated
 |---|---|---|
 | [product-brief.md](product-brief.md) | Why does this exist? Who is it for? What is in/out of scope? | 🟡 Proposed |
 | [domain-model.md](domain-model.md) | What are the nouns? How do they relate? What must always be true? | 🟡 Proposed |
+| [domain-model-entity-relation.md](domain-model-entity-relation.md) | Visual ER diagrams (split by domain) for the data model | 🟡 Proposed |
 | [clinical-rules.md](clinical-rules.md) | How do we calculate EDD, gestational age, fertility, risk, EPDS? | 🟡 Needs clinician review |
 | [content-strategy.md](content-strategy.md) | Where do food, fruit, milestone, and vaccine data come from? | 🟡 Proposed |
 | [architecture.md](architecture.md) | Modules, layers, DI, navigation, state, errors, build config | 🟡 Proposed |
