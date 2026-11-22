@@ -153,6 +153,13 @@ and document it in the copy deck.
 Content is **educational**, not a schedule of required care. Always add: "Your provider
 may follow a different schedule."
 
+### 5.1. Birth plan topics [MVP]
+
+- Topics are educational prompts, not recommendations.
+- Never imply a "correct" birth plan; every option is valid.
+- Include "your provider may have different guidance" copy.
+- Content requires clinician review.
+
 ## 6. Nutrition and supplements [Post-MVP]
 
 ### 6.1. Supplements (content, not prescription)

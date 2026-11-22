@@ -85,6 +85,7 @@ Tables marked `[MVP]` ship in the MVP; everything else is post-MVP. See [mvp.md]
 | `food_items` | `id`, `name`, `risk` | FTS on `name`, `aliases` |
 | `fruit_sizes` [MVP] | `week` | — |
 | `week_content` [MVP] | `week` | — |
+| `birth_plan_topics` [MVP] | `key` | — |
 | `food_entries` | `id`, `journey_id`, `logged_on` | `journey_id, logged_on` |
 | `conditions` | `id`, `journey_id`, `type` | `journey_id` |
 | `appointments` [MVP] | `id`, `journey_id`, `starts_at` | `journey_id, starts_at` |
@@ -107,6 +108,7 @@ Tables marked `[MVP]` ship in the MVP; everything else is post-MVP. See [mvp.md]
 | `epds_assessments` | `id`, `journey_id`, `taken_on` | `journey_id, taken_on` |
 | `emergency_contacts` | `id`, `profile_id` | — |
 | `hospital_bag_items` [MVP] | `id`, `journey_id` | `journey_id` |
+| `birth_plan_items` [MVP] | `id`, `journey_id`, `topic_key` | unique `journey_id, topic_key` |
 | `export_records` | `id`, `created_at` | — |
 
 ### 4.3. Migrations

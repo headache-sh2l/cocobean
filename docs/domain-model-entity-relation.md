@@ -235,7 +235,7 @@ erDiagram
     }
 ```
 
-## 6. Care & reminders
+## 6. Care, reminders & birth prep
 
 ```mermaid
 erDiagram
@@ -244,6 +244,8 @@ erDiagram
     JOURNEY ||--o{ REMINDER : configures
     JOURNEY ||--o{ SUPPLEMENT : takes
     JOURNEY ||--o{ HOSPITAL_BAG_ITEM : prepares
+    JOURNEY ||--o{ BIRTH_PLAN_ITEM : plans
+    BIRTH_PLAN_TOPIC ||--o{ BIRTH_PLAN_ITEM : defines
 
     EMERGENCY_CONTACT {
         string id PK "01J8R7S8T9"
@@ -284,6 +286,20 @@ erDiagram
         string label "Phone charger"
         string category "essentials"
         boolean isPacked "false"
+    }
+    BIRTH_PLAN_TOPIC {
+        string key PK "birth.pain_relief"
+        string title "Pain relief"
+        string category "COMFORT"
+        string contentVersion "1.0.0"
+    }
+    BIRTH_PLAN_ITEM {
+        string id PK "01J8W4X5Y6"
+        string journeyId FK "01J8Z3K4Q7"
+        string topicKey FK "birth.pain_relief"
+        boolean considered "true"
+        string selectedOptionKeys "epidural"
+        string notes "Open to an epidural"
     }
 ```
 
@@ -463,6 +479,8 @@ A compact, text-only view of the same relationships (useful when a diagram is to
 | EpdsAssessment | user | Journey | — |
 | EmergencyContact | user | Profile | — |
 | HospitalBagItem [MVP] | user | Journey | — |
+| BirthPlanTopic [MVP] | content | — | BirthPlanItem |
+| BirthPlanItem [MVP] | user | Journey, BirthPlanTopic | — |
 | ExportRecord | user | — | — |
 | FruitSize [MVP] | content | — | — |
 | WeekContent [MVP] | content | — | — |

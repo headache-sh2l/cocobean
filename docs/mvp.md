@@ -4,7 +4,7 @@
 > post-MVP. The canonical cut lives in
 > [product-brief.md §6.1](product-brief.md#61-mvp-recommended-cut).
 
-## In the MVP (5 features)
+## In the MVP (6 features)
 
 1. **Onboarding** — local profile, stage selection (pregnancy only; planning/postpartum
    shown as "coming soon"), due-date setup, disclaimer.
@@ -13,6 +13,7 @@
 3. **Kick counter** — session count with red-flag copy.
 4. **Appointments** — local list + optional system calendar insert.
 5. **Hospital bag checklist.**
+6. **Birth plan** — common topics with a "considered" toggle and the user's chosen options.
 
 ## MVP entities
 
@@ -25,6 +26,7 @@
 | HospitalBagItem | [3.22](domain-model.md#322-emergencycontact--hospitalbagitem) |
 | FruitSize / WeekContent | [3.24](domain-model.md#324-fruitsize--weekcontent-content) |
 | KickSession | [3.26](domain-model.md#326-kicksession--contractionlog) |
+| BirthPlanTopic / BirthPlanItem | [3.27](domain-model.md#327-birthplantopic-content--birthplanitem) |
 
 ## Explicitly post-MVP
 
@@ -55,3 +57,5 @@
   "call your provider" guidance; confirm this is acceptable.
 - **Export/import and data deletion** are post-MVP. This weakens the "user owns the data"
   promise and may affect store/privacy expectations.
+- **Birth plan content** must be clinician-reviewed. It is educational and must never imply
+  a "correct" plan.

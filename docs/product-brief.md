@@ -67,7 +67,7 @@ We do **not** assume:
 **Pregnancy-first vertical slice** — the smallest shippable app. It exercises the hardest
 problems (dates and content) and is the most differentiated.
 
-**In the MVP (5 features):**
+**In the MVP (6 features):**
 
 1. **Onboarding** — local profile, stage selection (pregnancy only; planning/postpartum
    shown as "coming soon"), due-date setup, disclaimer.
@@ -76,6 +76,7 @@ problems (dates and content) and is the most differentiated.
 3. **Kick counter** — session count with red-flag copy.
 4. **Appointments** — local list + optional system calendar insert.
 5. **Hospital bag checklist.**
+6. **Birth plan** — common topics with a "considered" toggle and the user's chosen options.
 
 Everything else is **post-MVP**. See [mvp.md](mvp.md) for the full in/out list.
 
@@ -90,6 +91,7 @@ Entity mapping:
 | HospitalBagItem | [3.22](domain-model.md#322-emergencycontact--hospitalbagitem) | Hospital bag checklist |
 | FruitSize / WeekContent | [3.24](domain-model.md#324-fruitsize--weekcontent-content) | Fruit comparison + week-by-week content |
 | KickSession | [3.26](domain-model.md#326-kicksession--contractionlog) | Kick counter |
+| BirthPlanTopic / BirthPlanItem | [3.27](domain-model.md#327-birthplantopic-content--birthplanitem) | Common topics + considered/selected options |
 
 **Moved to post-MVP:** daily log + mood check-in, food entry, reminders, export/import,
 settings, safety/emergency contacts, loss/termination flow, contraction timer, planning,
@@ -151,7 +153,7 @@ We cannot use in-app analytics without breaking principle 1. Use:
 - **Play Console vitals** (crash-free rate, ANR rate) — OS-level, no app telemetry.
 - **Moderated usability tests** with 8–12 target users per stage.
 - **Task completion** in tests: onboard, set up pregnancy, view the dashboard, use the
-  kick counter, add an appointment, and check the hospital bag.
+  kick counter, add an appointment, check the hospital bag, and fill in a birth plan.
 
 Targets for MVP:
 

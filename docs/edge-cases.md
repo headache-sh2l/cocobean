@@ -44,6 +44,15 @@
 | P-14 | DST fall-back at 01:30 | Reminder fires once, not twice. |
 | P-15 | User's due date is Feb 29 | Handle leap years; store `LocalDate`, not a month/day pair. |
 
+## 2a. Birth plan [MVP]
+
+| # | Scenario | Expected behavior |
+|---|---|---|
+| BP-01 | User has not considered a topic | Show "not yet considered"; do not default to an option. |
+| BP-02 | User changes their mind | Update the selection; keep notes; no history required. |
+| BP-03 | User selects conflicting options | Allow; show a gentle note, not an error. |
+| BP-04 | Content update removes an option | Keep the user's stored key; show "this option is no longer in our guide." |
+
 ## 3. Cycle and fertility [Post-MVP]
 
 | # | Scenario | Expected behavior |

@@ -101,6 +101,11 @@ flowchart TD
    - Track glucose/sugar/salt intake
    - Safety categorization (Safe/Moderate/Avoid)
 
+5. **Birth Planning**
+   - Review common birth plan topics (pain relief, support people, newborn care).
+   - Mark each topic as considered and choose the options to follow.
+   - Add notes; no recommendation or "correct" answer.
+
 ## 👶 Postpartum Flow [Post-MVP]
 
 ### Overview

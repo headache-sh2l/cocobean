@@ -65,6 +65,14 @@
 - Dark mode contrast.
 - Sensitive-mode copy (loss, NICU, infertility).
 
+### 2.6. Birth plan [MVP]
+
+- One item per topic per journey (upsert).
+- `considered` toggle persists.
+- Selected option keys persist and restore.
+- No default option is preselected.
+- Content updates keep user selections; removed options show a safe fallback.
+
 ## 3. Test doubles
 
 ```kotlin

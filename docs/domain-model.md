@@ -496,6 +496,42 @@ ContractionLog:
 **Rule:** these are tracking tools, not diagnostics. Show red-flag copy ("call your
 provider") but never interpret the pattern.
 
+### 3.27. BirthPlanTopic (content) / BirthPlanItem
+
+BirthPlanTopic:
+
+| Field | Type | Notes |
+|---|---|---|
+| `key` | String PK | e.g. `birth.pain_relief`. |
+| `title` | String | e.g. "Pain relief". |
+| `description` | String | Plain-language explanation. |
+| `category` | `COMFORT` / `DELIVERY` / `NEWBORN` / `POSTPARTUM` / `SUPPORT` | |
+| `options` | List<BirthPlanOption> | Each option has `key`, `label`, `note?`. |
+| `sourceRefs` | List<String> | Citation IDs. |
+| `reviewedOn` | LocalDate | |
+| `contentVersion` | String | |
+
+BirthPlanItem:
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | String | |
+| `journeyId` | String | |
+| `topicKey` | String | FK → BirthPlanTopic. |
+| `considered` | Boolean | Has the user considered this topic? |
+| `selectedOptionKeys` | List<String> | Chosen options; empty = considered but undecided. |
+| `notes` | String? | Free text. |
+| `updatedAt` | Instant | |
+
+**Rules**
+
+- One `BirthPlanItem` per topic per journey (upsert).
+- `considered = false` means the topic is still open; the UI shows "not yet considered."
+- The app records the user's preferences. It does not recommend a birth plan or imply a
+  "correct" choice.
+- Topics and options are content, reviewed and versioned; user selections reference stable
+  option keys.
+
 ## 4. Stage state machine
 
 ```mermaid

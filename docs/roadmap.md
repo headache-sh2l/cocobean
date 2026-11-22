@@ -41,6 +41,7 @@
 - [ ] [MVP] Kick counter with red-flag copy.
 - [ ] [MVP] Appointments: local list + optional system calendar insert.
 - [ ] [MVP] Hospital bag checklist.
+- [ ] [MVP] Birth plan: common topics + considered/selected options.
 - [ ] [Post-MVP] Daily log: symptoms, weight, notes; daily mood check-in.
 - [ ] [Post-MVP] Symptom catalog content.
 - [ ] [Post-MVP] Contraction timer with red-flag copy.
@@ -48,7 +49,7 @@
 - [ ] [Post-MVP] Loss/termination flow: pause reminders, sensitive copy, no auto-advance.
 
 **Exit:** a pregnant user can set up, see the correct week every day, use the kick counter,
-add an appointment, and check the hospital bag.
+add an appointment, check the hospital bag, and fill in a birth plan.
 
 ## Phase 3 — Reminders and notifications (2 weeks) — post-MVP
 
@@ -128,7 +129,7 @@ taps.
 ## MVP cut line
 
 **MVP = Onboarding + Pregnancy journey + Kick counter + Appointments + Hospital bag
-checklist.** Everything else is post-MVP. See [mvp.md](mvp.md).
+checklist + Birth plan.** Everything else is post-MVP. See [mvp.md](mvp.md).
 
 Why: this is the smallest slice that still exercises the hardest problems (dates and
 content) and is the most differentiated. Shipping more at once delays feedback and

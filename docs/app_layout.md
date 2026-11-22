@@ -6,9 +6,9 @@
 > Where this document conflicts with those, they win. See [README.md](README.md) for the
 > full document map.
 >
-> **MVP scope:** Onboarding, pregnancy journey, kick counter, appointments, and hospital
-> bag checklist. Screens marked `[MVP]` ship in the MVP; everything else is post-MVP. See
-> [mvp.md](mvp.md).
+> **MVP scope:** Onboarding, pregnancy journey, kick counter, appointments, hospital bag
+> checklist, and birth plan. Screens marked `[MVP]` ship in the MVP; everything else is
+> post-MVP. See [mvp.md](mvp.md).
 
 This document outlines the UI component hierarchy, screen layouts, navigation structure, and design system for the **Cocobean** app, strictly adhering to the user flows defined in [userflow.md](userflow.md).
 
@@ -95,8 +95,9 @@ flowchart TD
 ---
 
 ### 3.2. 🤱 Pregnant Layout [MVP]
-- **Bottom Nav Tabs (MVP)**: `[ Growth Dashboard ] [ Kick Counter ] [ Appointments ] [ Hospital Bag ]`
+- **Bottom Nav Tabs (MVP)**: `[ Growth Dashboard ] [ Kick Counter ] [ Appointments ] [ Birth Prep ]`
 - **Post-MVP tabs**: Reminders, Food Safety.
+- **Birth Prep** groups the Hospital Bag checklist and the Birth Plan.
 - **Growth Dashboard Screen (`PregnancyDashboardScreen.kt`)** [MVP]:
   - **Hero Card**: Gestational age (e.g., *Week 24 • 3 months to go*).
   - **Fruit Visual Comparison**: Large graphic card showing baby size (e.g., *"Your baby is the size of an ear of corn / papaya"* with an illustration).
@@ -113,6 +114,10 @@ flowchart TD
   - Calendar view highlighting upcoming ultrasounds, doctor visits, and lab tests.
   - "Add to calendar" button (one-way insert into the system calendar; no two-way sync).
   - Hospital bag checklist [MVP]; emergency contacts [Post-MVP].
+- **Birth Plan Screen (`BirthPlanScreen.kt`)** [MVP]:
+  - List of common topics (pain relief, delivery preferences, support people, newborn care, postpartum).
+  - Each topic has a "considered" toggle and selectable options.
+  - Notes per topic; no recommendation or "correct" answer.
 - **Food Safety & Condition Tracker (`FoodSafetyTrackerScreen.kt`)** [Post-MVP]:
   - **Searchable Food Safety Lookup**: Search any food item instantly (Safe, Moderate, Avoid).
   - **Condition Toggles**: e.g. gestational diabetes mode, which adjusts food notes and enables a glucose log. The app records what the user's provider recommends; it does not set intake limits.
